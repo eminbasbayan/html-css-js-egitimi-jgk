@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Form Input Örnekleri (Sadece HTML)</title>
+  </head>
+  <body>
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Kullanıcı Bilgileri</legend>
+
+        <label for="fullname">Ad Soyad:</label>
+        <input
+          type="text"
+          id="fullname"
+          name="fullname"
+          placeholder="Örn: Mehmet Yılmaz"
+          required
+          minlength="3"
+          maxlength="100"
+        />
+        <br />
+
+        <label for="username">Kullanıcı adı:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="kullanici_adi"
+          pattern="[A-Za-z0-9_\-]{3,20}"
+          title="3-20 karakter; harf, rakam, alt tire veya tire olabilir"
+        />
+        <br />
+
+        <label for="password">Parola:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          minlength="6"
+        />
+        <br />
+
+        <label for="email">E-posta:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="mail@ornek.com"
+          required
+        />
+        <br />
+
+        <label for="phone">Telefon (opsiyonel):</label>
+        <input type="tel" id="phone" name="phone" placeholder="05xx-xxx-xxxx" />
+        <br />
+
+        <label for="age">Yaş:</label>
+        <input type="number" id="age" name="age" min="1" max="120" step="1" />
+        <br />
+
+        <label for="birth">Doğum tarihi:</label>
+        <input type="date" id="birth" name="birth" />
+        <br />
+
+        <label for="appt">Randevu saati:</label>
+        <input type="time" id="appt" name="appt" />
+        <br />
+
+        <label for="dtlocal">Tarih ve Saat (yerel):</label>
+        <input type="datetime-local" id="dtlocal" name="dtlocal" />
+        <br />
+
+        <label for="favcolor">Favori renk:</label>
+        <input type="color" id="favcolor" name="favcolor" value="#336699" />
+        <br />
+
+        <label for="salary">Maaş beklentisi (örn: 1000.00):</label>
+        <input type="number" id="salary" name="salary" step="0.01" />
+        <br />
+
+        <label for="satisfaction">Memnuniyet (0-10):</label>
+        <input
+          type="range"
+          id="satisfaction"
+          name="satisfaction"
+          min="0"
+          max="10"
+          value="5"
+          step="2"
+        />
+        <br />
+      </fieldset>
+
+      <fieldset>
+        <legend>Tercihler</legend>
+
+        <label>
+          <input type="checkbox" name="newsletter" checked />
+          Bültene abone ol
+        </label>
+        <br />
+
+        <p>Cinsiyet:</p>
+        <label><input type="radio" name="gender" value="male" /> Erkek</label>
+        <label><input type="radio" name="gender" value="female" /> Kadın</label>
+        <label><input type="radio" name="gender" value="other" /> Diğer</label>
+        <br />
+
+        <label for="country">Ülke seçimi:</label>
+        <select id="country" name="country">
+          <option value="">-- Seçiniz --</option>
+          <option value="tr">Türkiye</option>
+          <option value="de">Almanya</option>
+          <option value="us">Amerika</option>
+        </select>
+        <br />
+
+        <label for="skills">Beceriler (çoklu seçim):</label>
+        <select id="skills" name="skills" multiple size="4">
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="js">JavaScript</option>
+          <option value="node">Node.js</option>
+        </select>
+        <br />
+
+        <label for="resume">Özgeçmiş (dosya):</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" />
+        <br />
+
+        <label for="bio">Kısa biyografi:</label>
+        <textarea
+          id="bio"
+          name="bio"
+          rows="4"
+          cols="40"
+          placeholder="Kendinizi kısaca tanıtın..."
+        ></textarea>
+        <br />
+
+        <label for="language">Tercih ettiğiniz dil:</label>
+        <input
+          list="langs"
+          id="language"
+          name="language"
+          placeholder="Bir dil yazın veya seçin"
+        />
+        <datalist id="langs">
+          <option value="Türkçe"></option>
+          <option value="İngilizce"></option>
+          <option value="Almanca"></option>
+          <option value="Arapça"></option>
+        </datalist>
+
+        <br />
+      </fieldset>
+
+      <input type="hidden" name="form_id" value="signup_2025" />
+
+      <p>
+        <input type="submit" value="Gönder" />
+        <input type="reset" value="Sıfırla" />
+        <button type="button" disabled>Yardım (devre dışı)</button>
+      </p>
+    </form>
+  </body>
+</html>
