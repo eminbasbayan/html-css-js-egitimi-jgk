@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+.onemli {
+  background-color: yellow;
+  padding: 5px;
+}
+
+#benzersiz {
+  border: 3px solid red;
+  padding: 10px;
+}
+
+.kutu {
+  background-color: lightblue;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.kutu p {
+  color: darkblue;
+}
+
+ul li {
+  list-style-type: square;
+  margin: 5px 0;
+}
+
+ul > li {
+  font-weight: bold;
+}
+
+li.vurgulu {
+  color: red;
+  font-size: 18px;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+input[type='text'] {
+  padding: 8px;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+}
+
+input[type='email'] {
+  padding: 8px;
+  border: 2px solid #27ae60;
+  border-radius: 4px;
+}
+
+.kart:first-child {
+  background-color: #ffeaa7;
+}
+
+.kart:last-child {
+  background-color: #fab1a0;
+}
+
+p:nth-child(2) {
+  font-style: italic;
+}
+
+span + span {
+  margin-left: 10px;
+  color: purple;
+}
+
+.baba .cocuk {
+  text-decoration: underline;
+}
+
+article h3 {
+  color: #e74c3c;
+}
+
+p::first-letter {
+  font-size: 2em;
+  color: #2980b9;
+}
+
+.ozel::before {
+  content: '→ ';
+  color: green;
+}
+
+.ozel::after {
+  content: ' ←';
+  color: green;
+}

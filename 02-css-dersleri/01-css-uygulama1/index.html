@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Seçiciler Ödevi</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- ÖDEV TALİMATLARI -->
+    <div
+      style="
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      "
+    >
+      <h2 style="margin-top: 0">📝 CSS SEÇİCİLER ÖDEVİ</h2>
+      <p style="font-size: 18px">
+        <strong>Göreviniz:</strong> Aşağıdaki HTML yapısına uygun CSS seçicileri
+        yazarak istenilen stilleri uygulayın.
+      </p>
+
+      <h3>İstenenler:</h3>
+      <ol style="line-height: 1.8">
+        <li>Tüm h1 başlıklarını koyu mavi (#2c3e50) ve ortala</li>
+        <li>"onemli" sınıfına sahip elementleri sarı arka planlı yap</li>
+        <li>
+          "benzersiz" id'sine sahip elementi kırmızı 3px kenarlık ile çevir
+        </li>
+        <li>"kutu" sınıfına açık mavi arka plan ver</li>
+        <li>"kutu" içindeki paragrafları koyu mavi yap</li>
+        <li>Tüm liste öğelerinin stilini kare yap</li>
+        <li>Doğrudan ul'nin çocuğu olan li'leri kalın yap</li>
+        <li>"vurgulu" sınıfına sahip li'leri kırmızı ve 18px yap</li>
+        <li>Linkler üzerine gelindiğinde turuncu olsun</li>
+        <li>Text input'larına mavi, email input'larına yeşil kenarlık ver</li>
+        <li>İlk kartı sarı, son kartı pembe arka planlı yap</li>
+        <li>Her bölümdeki ikinci paragrafı italik yap</li>
+        <li>Yan yana span'ler arasına boşluk ekle ve mor yap</li>
+        <li>"baba" içindeki "cocuk" sınıflı elementlerin altını çiz</li>
+        <li>Article içindeki h3'leri kırmızı yap</li>
+        <li>Paragrafların ilk harfini büyük ve mavi yap</li>
+        <li>"ozel" sınıfının başına ve sonuna ok işareti ekle</li>
+      </ol>
+    </div>
+
+    <!-- HTML YAPISI -->
+    <h1>CSS Seçiciler Test Sayfası</h1>
+
+    <p class="onemli">Bu paragraf önemli sınıfına sahip!</p>
+
+    <div id="benzersiz">Bu div benzersiz ID'ye sahip</div>
+
+    <div class="kutu">
+      <h2>Kutu Başlık</h2>
+      <p>Kutu içindeki ilk paragraf</p>
+      <p>Kutu içindeki ikinci paragraf</p>
+    </div>
+
+    <ul>
+      <li>Normal liste öğesi</li>
+      <li class="vurgulu">Vurgulu liste öğesi</li>
+      <li>
+        Başka bir liste öğesi
+        <ul>
+          <li>İç içe liste öğesi</li>
+          <li>Başka bir iç içe öğe</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><a href="#">Bu bir link</a> - üzerine gelin!</p>
+
+    <form>
+      <input type="text" placeholder="Adınız" />
+      <input type="email" placeholder="E-posta" />
+    </form>
+
+    <div class="kart">İlk Kart</div>
+    <div class="kart">Orta Kart</div>
+    <div class="kart">Son Kart</div>
+
+    <article>
+      <h3>Makale Başlığı</h3>
+      <p>Makale içeriği buraya gelecek.</p>
+    </article>
+
+    <div>
+      <span>İlk span</span>
+      <span>İkinci span</span>
+      <span>Üçüncü span</span>
+    </div>
+
+    <div class="baba">
+      <p class="cocuk">Baba içindeki çocuk element</p>
+      <div>
+        <p class="cocuk">Daha derinlerdeki çocuk</p>
+      </div>
+    </div>
+
+    <p class="ozel">Özel sınıfa sahip paragraf</p>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </body>
+</html>
