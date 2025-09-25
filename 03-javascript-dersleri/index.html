@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const car = {
+        marka: 'Toyota',
+        model: 'Corolla',
+        year: 2020,
+        true: 'doğru',
+      };
+
+      const propertyName = 'year';
+
+      console.log(car.marka);
+      console.log(car['model']);
+      console.log(car[true]);
+      console.log(car[propertyName]);
+      console.log(car['email']);
+      console.log(car.email);
+
+      const employeeStatus = {
+        Ahmet: 'Görevde',
+        Zeynep: 'Toplantıda',
+        Izinliler: {
+          Berk: 'İzinde',
+          Selma: 'İzinde Değil',
+        },
+      };
+
+      const employeeStatusNew2 = {
+        ...employeeStatus,
+        Zeynep: 'İşi Bıraktı',
+        Izinliler: {
+          Berk: 'İşi Bıraktı',
+          Selma: 'İşi Bıraktı',
+          YeniEleman: 'İzinde',
+        },
+      };
+
+      delete employeeStatusNew2.Izinliler.YeniEleman;
+
+      employeeStatusNew2.Mehmet = 'İzinde';
+
+      if ('YeniEleman' in employeeStatus.Izinliler) {
+        console.log('YeniEleman hâlâ sistemde.');
+      } else {
+        console.log('YeniEleman silinmiş.');
+      }
+
+      console.log(Object.values(employeeStatusNew2.Izinliler));
+      console.log(Object.keys(employeeStatusNew2.Izinliler));
+
+      const employeeStatusNew = employeeStatus;
+      console.log('employeeStatusNew: ', employeeStatusNew);
+      employeeStatus.Ahmet = 'İzinli';
+      employeeStatus['Ahmet'] = 'İşi Bıraktı';
+
+      console.log('employeeStatus: ', employeeStatus);
+      console.log('employeeStatusNew: ', employeeStatusNew);
+      console.log('employeeStatusNew2: ', employeeStatusNew2);
+
+      const products = [
+        {
+          id: 1,
+          title: 'Apple',
+          category: 'Telefon',
+          description: 'Falan Filan',
+          price: 2000,
+        },
+        {
+          id: 2,
+          title: 'Samsung',
+          category: 'Telefon',
+          description: 'Falan Filan',
+          price: 1000,
+        },
+        {
+          id: 3,
+          title: 'Lenovo',
+          category: 'Bilgisayar',
+          description: 'Falan Filan',
+          price: 3000,
+        },
+      ];
+
+      const newProducts = [];
+      products.forEach(function (product) {
+        if (product.category === 'Telefon') {
+          newProducts.push(product);
+        }
+      });
+      console.log('newProducts: ', newProducts);
+
+      const filteredProducts = products.filter(function (product) {
+        return product.category === 'Telefon';
+      });
+
+      console.log(filteredProducts);
+
+      const gonderi = {
+        baslik: "JavaScript'te Nesne Kullanımı",
+        yazar: 'coderay',
+        yorumlar: [
+          {
+            kullanici: 'elifdev',
+            yazi: 'Çok faydalı olmuş.',
+            oy: 8,
+          },
+          {
+            kullanici: 'mehmetintech',
+            yazi: 'JSON yapısına da değinebilir misiniz?',
+            oy: 3,
+          },
+        ],
+        etiketler: ['javascript', 'nesne', 'dizi'],
+        goruntulenme: 542,
+      };
+
+      console.log(gonderi.yorumlar[0].yazi);
+      console.log(gonderi.etiketler[1]);
+
+      for (let i = 1; i <= 5; i++) {
+        console.log('Sayı:', i);
+      }
+
+      for (let sayi = 10; sayi <= 15; sayi++) {
+        console.log('Şu anki sayı:', sayi);
+      }
+
+      const products2 = [
+        {
+          id: 1,
+          title: 'Apple',
+          category: 'Telefon',
+          description: 'Falan Filan',
+          price: 2000,
+        },
+        {
+          id: 2,
+          title: 'Samsung',
+          category: 'Telefon',
+          description: 'Falan Filan',
+          price: 1000,
+        },
+        {
+          id: 3,
+          title: 'Lenovo',
+          category: 'Bilgisayar',
+          description: 'Falan Filan',
+          price: 3000,
+        },
+      ];
+
+      const newArr = [];
+      for (let i = 0; i < products2.length; i++) {
+        console.log(products2[i].title);
+        if (!(products2[i].id === 3)) {
+          products2[i].status = true;
+        }
+
+        if (products2[i].category === 'Telefon') {
+          newArr.push(products2[i]);
+        }
+      }
+
+      console.log(newArr);
+
+      for (let j = 50; j <= 100; j++) {
+        console.log(j);
+      }
+
+      //  15 den başlayarak 3 er 3 er 90 a kadar consolda yazdırılsın. 90 dahil.
+
+      const salonDuzeni = [
+        ['Ahmet', 'Burcu', 'Cem'],
+        ['Deniz', 'Emre', 'Feyza'],
+        ['Gizem', 'Hakan', 'İlayda'],
+        ['Gizem', 'Hakan', 'İlayda'],
+      ];
+
+      const salonDuzeni2 = [];
+      for (let i = 0; i < salonDuzeni.length; i++) {
+        salonDuzeni2.push({ [i + 1]: salonDuzeni[i] });
+      }
+
+      console.log(salonDuzeni2);
+
+      [
+        { birinciSira: ['Ahmet', 'Burcu', 'Cem'] },
+        { ikinciSira: ['Deniz', 'Emre', 'Feyza'] },
+        { ucuncuSira: ['Gizem', 'Hakan', 'İlayda'] },
+      ];
+
+      const birinciSira = [];
+      const ikinciSira = [];
+      const ucuncuSira = [];
+
+      for (let i = 0; i < salonDuzeni.length; i++) {
+        if (i === 0) {
+          birinciSira.push(salonDuzeni[i]);
+        }
+
+        if (i === 1) {
+          ikinciSira.push(salonDuzeni[i]);
+        }
+
+        if (i === 2) {
+          ucuncuSira.push(salonDuzeni[i]);
+        }
+      }
+
+      console.log(birinciSira);
+      console.log(ikinciSira);
+      console.log(ucuncuSira);
+    </script>
+  </body>
+</html>
