@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let students = ['Emin', 'Ayşe', 'Mehmet', 'Zeynep'];
+
+      students.push('Ayşegül');
+      students.shift();
+      students.reverse();
+
+      console.log(students);
+
+      let langs = ['Python', 'C#', 'Java', 'JavaScript', 'Go'];
+      let dil = 'PHP';
+      if (langs.includes(dil)) {
+        console.log(langs.indexOf(dil));
+      } else {
+        langs.push(dil);
+        console.log(dil, 'Eklendi');
+      }
+
+      console.log(langs);
+
+      let words = ['Merhaba', 'Dünya', 'JavaScript', 'Kodlama'];
+
+      let yeniWords = words.concat(['Node', 'React']);
+      yeniWords.slice(0, 2);
+      yeniWords.splice(2, 0, 'TypeScript');
+      console.log(yeniWords);
+
+      let numbers = [10, 20, 30, 40, 50];
+      numbers.splice(2, 2);
+      numbers.push('100');
+      let sayilar = numbers.map(function (value) {
+        return value.toString();
+      });
+      sayilar.reverse();
+      console.log(sayilar);
+
+      let arr = ['elma', 'armut', 'muz'];
+      arr.push('karpuz');
+      arr.unshift('çilek');
+      arr.shift();
+      let diziDegisken = arr.join(' - ');
+
+      console.log(diziDegisken);
+
+      let matrix = [
+        [1, 2],
+        [3, 4],
+        [5, 6],
+      ];
+      matrix[1].push(7);
+      matrix[0].reverse();
+      let sonuc = matrix.flat();
+      console.log(sonuc);
+
+      let fruits = ['apple', 'cherry', 'banana', 'date'];
+      let meyve = 'banana';
+      if (!fruits.includes(meyve)) {
+        fruits.push(meyve);
+      }
+
+      let buyukMeyve = fruits
+        .map(function (value) {
+          return value.toUpperCase();
+        })
+        .sort();
+
+      console.log(buyukMeyve);
+
+      let text = 'JavaScript öğrenmek çok eğlenceli';
+
+      let dizi = text.split(' ');
+      dizi.pop();
+
+      dizi.unshift('Bugün');
+
+      let stringHali = dizi.join(' ');
+      console.log(stringHali);
+
+      let nums = [5, 2, 8, 1, 9];
+      nums.sort();
+      let enbuyukiki = nums.slice(-2);
+      console.log(enbuyukiki);
+      console.log('En Büyükler: ' + enbuyukiki[0] + ',' + enbuyukiki[1]);
+
+      let nested = [
+        ['Ali', 'Veli'],
+        ['Ayşe', 'Fatma'],
+        ['Ahmet', 'Mehmet'],
+      ];
+      nested[1].unshift('zeynep');
+      let filtre = nested
+        .flat()
+        .filter((name) => name.toLocaleLowerCase().includes('a'));
+      console.log(filtre);
+
+      let arr2 = ['JS', 'Node', 'React'];
+
+      arr2.reverse();
+
+      console.log(arr2.join(' | '));
+      console.log(arr2.includes('Node'));
+      console.log(arr2);
+
+      let numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      // numbers2.splice(2,1);
+      // numbers2.push("6");
+      // numbers2.forEach(function (number){
+      //    console.log(typeof number);
+
+      // })
+
+      let ortaEleman = Math.ceil(numbers2.length / 2);
+      console.log('ortaEleman: ', ortaEleman);
+      numbers2.splice(ortaEleman - 1, 1);
+      console.log(numbers2);
+
+      let sentence = 'Ben JavaScript öğreniyorum';
+      let yeniDizi = sentence.split(' ');
+      console.log(yeniDizi);
+      let indexNo = yeniDizi.indexOf('JavaScript');
+      console.log(indexNo);
+      yeniDizi.splice(indexNo, 1, 'Node.js');
+      console.log(yeniDizi);
+      let sentenceString = yeniDizi.join(' ');
+      console.log(sentenceString);
+
+      let arr3 = [100, 200, 300, 400, 500];
+
+      let ilkIkiEleman = arr3.slice(0, 2);
+      console.log(ilkIkiEleman);
+
+      let ortaEleman2 = Math.ceil(arr3.length / 2);
+      console.log(arr3.splice(ortaEleman2 - 1, 1));
+
+      let arr4 = arr3.reverse();
+      console.log(arr4);
+
+      let data = [
+        [2, 4],
+        [6, 8],
+        [10, 12],
+      ];
+      data.forEach((data2) => data2.push('done'));
+      console.log(data);
+
+      let duz = data.flat();
+      console.log(duz);
+
+      const newArr = duz
+        .filter(function (item) {
+          return typeof item === 'number';
+        })
+        .sort(function (a, b) {
+          return a - b;
+        });
+
+      console.log(newArr);
+
+      let arr5 = ['Emin', 'JavaScript', 'React', 'Next.js'];
+
+      arr5.unshift('Merhaba');
+      let elemean = arr5.indexOf('React');
+      arr5.splice(elemean, 1);
+      arr5.reverse();
+      arr5.join(' ');
+      console.log(arr5.join(' '));
+
+      let arr6 = [9, 4, 7, 1, 2];
+
+      arr6.sort();
+      let ilkParca = arr6.slice(0, 3);
+      console.log(ilkParca);
+      let sonParca = arr6.slice(3);
+      let sonDizi = sonParca.concat(ilkParca);
+      console.log(sonDizi);
+
+      let colors = ['red', 'green', 'blue'];
+      if (colors.includes('yellow')) {
+        colors.splice(colors.indexOf('yellow', 1));
+      } else {
+        colors.push('yellow');
+      }
+      let colorString = colors.join(',');
+      let blueVarmi = colors.includes('blue');
+      console.log(blueVarmi);
+      console.log(colors);
+
+      let arr7 = [
+        ['a', 'b'],
+        ['c', 'd'],
+        ['e', 'f'],
+      ];
+
+      arr7[0].push('z');
+
+      arr7[1].reverse();
+
+      let duzlestirilmis = arr7.flat().join(' - ');
+
+      // let birlestirilmis = duzlestirilmis.join(' - ');
+
+      console.log(duzlestirilmis);
+
+      let text2 = "JavaScript ile web geliştirme çok keyifli";
+      let kelimeler=text2.split(" ");
+      console.log(kelimeler);
+      kelimeler.splice(kelimeler.indexOf("web"),1);
+      console.log(kelimeler);
+      kelimeler.push("uygulama");
+      let sonHal =kelimeler.reverse().join(" ");
+      console.log(sonHal);
+   
+   </script>
+  </body>
+</html>
