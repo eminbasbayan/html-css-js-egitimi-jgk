@@ -156,6 +156,13 @@
         },
       ];
 
+      for (let product of products2) {
+        if (product.category === 'Telefon') {
+          console.log(product);
+        }
+        console.log('for..of Products2:', product);
+      }
+
       const newArr = [];
       for (let i = 0; i < products2.length; i++) {
         console.log(products2[i].title);
@@ -217,6 +224,92 @@
       console.log(birinciSira);
       console.log(ikinciSira);
       console.log(ucuncuSira);
+
+      let number = 5;
+
+      while (number <= 15) {
+        console.log('Şu anki sayı:', number);
+        number++;
+      }
+
+      // let cevap = prompt('Bir kelime yaz:');
+
+      // while (true) {
+      //   cevap = prompt('Sen dedin ki: ' + cevap);
+
+      //   if (cevap.toLowerCase() === 'tamam') {
+      //     break;
+      //   }
+      // }
+
+      for (let i = 1; i <= 200; i++) {
+        console.log(i);
+
+        if (i === 30) {
+          break;
+        }
+      }
+
+      const kitaplar = [
+        'Kürk Mantolu Madonna',
+        'Simyacı',
+        'Tutunamayanlar',
+        'Sinekli Bakkal',
+      ];
+
+      for (let i = 0; i < kitaplar.length; i++) {
+        console.log('Kitap: ' + kitaplar[i]);
+      }
+
+      for (let kitap of kitaplar) {
+        console.log('for..of Kitap: ', kitap);
+      }
+
+      const siniflar = [
+        ['Mert', 'Zeynep'],
+        ['Berk', 'Ece'],
+        ['İrem', 'Yusuf'],
+      ];
+
+      for (let sinif of siniflar) {
+        for (let ogrenci of sinif) {
+          console.log('Öğrenci Adı: ', ogrenci);
+        }
+      }
+
+      const kelime = 'JavaScript';
+
+      for (let harf of kelime) {
+        if (harf === 'a') {
+          console.log(harf.toUpperCase());
+        }
+      }
+
+      const kitaplar2 = {
+        'Harry Potter': 120,
+        'Yüzüklerin Efendisi': 200,
+        Sefiller: 180,
+      };
+
+      for (let kitap in kitaplar2) {
+        console.log(kitaplar2[kitap]);
+      }
+
+      const product = {
+        id: 1,
+        title: 'Apple',
+        category: 'Telefon',
+        description: 'Falan Filan',
+        price: 2000,
+      };
+
+      for (let p in product) {
+        console.log(product[p] === 'Apple');
+      }
+
+      console.log(Object.entries(product));
+      console.log(Object.keys(product));
+      console.log(Object.values(product).filter((value) => value === 2000));
     </script>
   </body>
 </html>
