@@ -7,433 +7,102 @@
   </head>
   <body>
     <script>
-      const car = {
-        marka: 'Toyota',
-        model: 'Corolla',
-        year: 2020,
-        true: 'doğru',
-      };
-
-      const propertyName = 'year';
-
-      console.log(car.marka);
-      console.log(car['model']);
-      console.log(car[true]);
-      console.log(car[propertyName]);
-      console.log(car['email']);
-      console.log(car.email);
-
-      const employeeStatus = {
-        Ahmet: 'Görevde',
-        Zeynep: 'Toplantıda',
-        Izinliler: {
-          Berk: 'İzinde',
-          Selma: 'İzinde Değil',
-        },
-      };
-
-      const employeeStatusNew2 = {
-        ...employeeStatus,
-        Zeynep: 'İşi Bıraktı',
-        Izinliler: {
-          Berk: 'İşi Bıraktı',
-          Selma: 'İşi Bıraktı',
-          YeniEleman: 'İzinde',
-        },
-      };
-
-      delete employeeStatusNew2.Izinliler.YeniEleman;
-
-      employeeStatusNew2.Mehmet = 'İzinde';
-
-      if ('YeniEleman' in employeeStatus.Izinliler) {
-        console.log('YeniEleman hâlâ sistemde.');
-      } else {
-        console.log('YeniEleman silinmiş.');
-      }
-
-      console.log(Object.values(employeeStatusNew2.Izinliler));
-      console.log(Object.keys(employeeStatusNew2.Izinliler));
-
-      const employeeStatusNew = employeeStatus;
-      console.log('employeeStatusNew: ', employeeStatusNew);
-      employeeStatus.Ahmet = 'İzinli';
-      employeeStatus['Ahmet'] = 'İşi Bıraktı';
-
-      console.log('employeeStatus: ', employeeStatus);
-      console.log('employeeStatusNew: ', employeeStatusNew);
-      console.log('employeeStatusNew2: ', employeeStatusNew2);
-
-      const products = [
-        {
-          id: 1,
-          title: 'Apple',
-          category: 'Telefon',
-          description: 'Falan Filan',
-          price: 2000,
-        },
-        {
-          id: 2,
-          title: 'Samsung',
-          category: 'Telefon',
-          description: 'Falan Filan',
-          price: 1000,
-        },
-        {
-          id: 3,
-          title: 'Lenovo',
-          category: 'Bilgisayar',
-          description: 'Falan Filan',
-          price: 3000,
-        },
+      const students = [
+        { id: 1, name: 'Ahmet', age: 21, grade: 85 },
+        { id: 2, name: 'Ayşe', age: 19, grade: 92 },
+        { id: 3, name: 'Mehmet', age: 22, grade: 67 },
+        { id: 4, name: 'Fatma', age: 20, grade: 74 },
+        { id: 5, name: 'Ali', age: 23, grade: 90 },
       ];
 
-      const newProducts = [];
-      products.forEach(function (product) {
-        if (product.category === 'Telefon') {
-          newProducts.push(product);
+      // Sorular
+      // 	1.	Bir function yaz: getNamesUpperCase(arr)
+      // 	•	Tüm öğrencilerin isimlerini büyük harfe çevirip yeni bir array döndürsün.
+      // 	•	İçeride sadece for veya forEach kullanılabilir.
+
+      function getNamesUpperCase(arr) {
+        let dizi = [];
+        for (let i = 0; i < arr.length; i++) {
+          dizi.push(arr[i].name.toUpperCase());
         }
-      });
-      console.log('newProducts: ', newProducts);
-
-      const filteredProducts = products.filter(function (product) {
-        return product.category === 'Telefon';
-      });
-
-      console.log(filteredProducts);
-
-      const gonderi = {
-        baslik: "JavaScript'te Nesne Kullanımı",
-        yazar: 'coderay',
-        yorumlar: [
-          {
-            kullanici: 'elifdev',
-            yazi: 'Çok faydalı olmuş.',
-            oy: 8,
-          },
-          {
-            kullanici: 'mehmetintech',
-            yazi: 'JSON yapısına da değinebilir misiniz?',
-            oy: 3,
-          },
-        ],
-        etiketler: ['javascript', 'nesne', 'dizi'],
-        goruntulenme: 542,
-      };
-
-      console.log(gonderi.yorumlar[0].yazi);
-      console.log(gonderi.etiketler[1]);
-
-      for (let i = 1; i <= 5; i++) {
-        console.log('Sayı:', i);
+        return dizi;
       }
 
-      for (let sayi = 10; sayi <= 15; sayi++) {
-        console.log('Şu anki sayı:', sayi);
-      }
+      console.log(getNamesUpperCase(students));
 
-      const products2 = [
-        {
-          id: 1,
-          title: 'Apple',
-          category: 'Telefon',
-          description: 'Falan Filan',
-          price: 2000,
-        },
-        {
-          id: 2,
-          title: 'Samsung',
-          category: 'Telefon',
-          description: 'Falan Filan',
-          price: 1000,
-        },
-        {
-          id: 3,
-          title: 'Lenovo',
-          category: 'Bilgisayar',
-          description: 'Falan Filan',
-          price: 3000,
-        },
-      ];
-
-      for (let product of products2) {
-        if (product.category === 'Telefon') {
-          console.log(product);
+      // 	2.	Bir function yaz: getHighGrades(arr)
+      // 	•	Notu 80 üstü olan öğrencileri döndürsün.
+      function getHighGrades(arr) {
+        const puan = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].grade > 80) {
+            puan.push(arr[i]);
+          }
         }
-        console.log('for..of Products2:', product);
+        return puan;
       }
+      console.log(getHighGrades(students));
 
-      const newArr = [];
-      for (let i = 0; i < products2.length; i++) {
-        console.log(products2[i].title);
-        if (!(products2[i].id === 3)) {
-          products2[i].status = true;
+      // 	3.	Bir function yaz: getAverageGrade(arr)
+      // 	•	Tüm öğrencilerin notlarının ortalamasını hesaplasın.
+
+      function getAverageGrade(arr) {
+        let toplam = 0;
+        for (let i = 0; i < arr.length; i++) {
+          toplam += arr[i].grade;
         }
+        return toplam / arr.length;
+      }
+      console.log(getAverageGrade(students));
 
-        if (products2[i].category === 'Telefon') {
-          newArr.push(products2[i]);
+      // 	4.	Bir function yaz: findTopStudent(arr)
+      // 	•	En yüksek nota sahip öğrenciyi bulsun.
+
+      function findTopStudent(arr) {
+        let top = arr[0];
+
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i].grade > top.grade) {
+            top = arr[i];
+          }
         }
+        return top;
       }
+      console.log(findTopStudent(students));
 
-      console.log(newArr);
-
-      for (let j = 50; j <= 100; j++) {
-        console.log(j);
-      }
-
-      //  15 den başlayarak 3 er 3 er 90 a kadar consolda yazdırılsın. 90 dahil.
-
-      const salonDuzeni = [
-        ['Ahmet', 'Burcu', 'Cem'],
-        ['Deniz', 'Emre', 'Feyza'],
-        ['Gizem', 'Hakan', 'İlayda'],
-        ['Gizem', 'Hakan', 'İlayda'],
-      ];
-
-      const salonDuzeni2 = [];
-      for (let i = 0; i < salonDuzeni.length; i++) {
-        salonDuzeni2.push({ [i + 1]: salonDuzeni[i] });
-      }
-
-      console.log(salonDuzeni2);
-
-      [
-        { birinciSira: ['Ahmet', 'Burcu', 'Cem'] },
-        { ikinciSira: ['Deniz', 'Emre', 'Feyza'] },
-        { ucuncuSira: ['Gizem', 'Hakan', 'İlayda'] },
-      ];
-
-      const birinciSira = [];
-      const ikinciSira = [];
-      const ucuncuSira = [];
-
-      for (let i = 0; i < salonDuzeni.length; i++) {
-        if (i === 0) {
-          birinciSira.push(salonDuzeni[i]);
-        }
-
-        if (i === 1) {
-          ikinciSira.push(salonDuzeni[i]);
-        }
-
-        if (i === 2) {
-          ucuncuSira.push(salonDuzeni[i]);
-        }
-      }
-
-      console.log(birinciSira);
-      console.log(ikinciSira);
-      console.log(ucuncuSira);
-
-      let number = 5;
-
-      while (number <= 15) {
-        console.log('Şu anki sayı:', number);
-        number++;
-      }
-
-      // let cevap = prompt('Bir kelime yaz:');
-
-      // while (true) {
-      //   cevap = prompt('Sen dedin ki: ' + cevap);
-
-      //   if (cevap.toLowerCase() === 'tamam') {
-      //     break;
-      //   }
+      // 	5.	Bir higher-order function yaz:
+      // function processStudents(arr, callback) {
+      //   // arr üzerinde dönsün ve callback ile filtreleme/işleme yapsın
       // }
 
-      for (let i = 1; i <= 200; i++) {
-        console.log(i);
-
-        if (i === 30) {
-          break;
-        }
-      }
-
-      const kitaplar = [
-        'Kürk Mantolu Madonna',
-        'Simyacı',
-        'Tutunamayanlar',
-        'Sinekli Bakkal',
-      ];
-
-      for (let i = 0; i < kitaplar.length; i++) {
-        console.log('Kitap: ' + kitaplar[i]);
-      }
-
-      for (let kitap of kitaplar) {
-        console.log('for..of Kitap: ', kitap);
-      }
-
-      const siniflar = [
-        ['Mert', 'Zeynep'],
-        ['Berk', 'Ece'],
-        ['İrem', 'Yusuf'],
-      ];
-
-      for (let sinif of siniflar) {
-        for (let ogrenci of sinif) {
-          console.log('Öğrenci Adı: ', ogrenci);
-        }
-      }
-
-      const kelime = 'JavaScript';
-
-      for (let harf of kelime) {
-        if (harf === 'a') {
-          console.log(harf.toUpperCase());
-        }
-      }
-
-      const kitaplar2 = {
-        'Harry Potter': 120,
-        'Yüzüklerin Efendisi': 200,
-        Sefiller: 180,
-      };
-
-      for (let kitap in kitaplar2) {
-        console.log(kitaplar2[kitap]);
-      }
-
-      const product = {
-        id: 1,
-        title: 'Apple',
-        category: 'Telefon',
-        description: 'Falan Filan',
-        price: 2000,
-      };
-
-      for (let p in product) {
-        console.log(product[p] === 'Apple');
-      }
-
-      console.log(Object.entries(product));
-      console.log(Object.keys(product));
-      console.log(Object.values(product).filter((value) => value === 2000));
-
-      bilgiVer();
-
-      function bilgiVer() {
-        console.log('Yazılım öğrenmek eğlencelidir.');
-        console.log('Disiplinli çalışmak başarıyı getirir.');
-        console.log('Bugün öğrendiğin, yarın seni geliştirir.');
-      }
-
-      const newVar = 'Hello';
-
-      console.log(newVar);
-
-      function welcome(studentName, className) {
-        console.log(`Sınıfa hoş geldin ${studentName}
-Sınıfınız ${className}`);
-      }
-
-      welcome('Emin', '11-C');
-      welcome('Murat', '12-A');
-      welcome();
-
-      checkResult('Emin', 56);
-      checkResult('Ahmet', 27);
-
-      function checkResult(studentName, score) {
-        if (score >= 50) {
-          console.log(
-            `${studentName} öğrencisi ${score} puanı ile dersi geçmiştir.`
-          );
-        } else {
-          console.error(
-            `${studentName} öğrencisi ${score} puanı ile dersten kalmıştır.`
-          );
-        }
-      }
-
-      function repeatText(text, count) {
-        let output = '';
-        for (let i = 0; i < count; i++) {
-          output += text;
-        }
-        console.log(output);
-      }
-
-      repeatText('Uyarı! ', 3);
-      repeatText('Hello! ', 3);
-
-      function carp(a, b) {
-        console.log(a * b);
-        return a * b;
-        console.log(a * b);
-        console.log(a * b);
-        console.log(a * b);
-        console.log(a * b);
-        console.log(a * b);
-      }
-
-      const carpSonuc = carp(2, 3);
-
-      console.log(carpSonuc);
-
-      function topla(a, b) {
-        if (typeof a !== 'number' || typeof b !== 'number') {
-          return 'Geçersiz giriş';
-        }
-
-        return a + b;
-      }
-
-      const toplaSonuc = topla(3, '6');
-      console.log(6 === '6'); // true
-
-      console.log(toplaSonuc);
-
-      function ikiKat(x) {
-        return x * 2;
-      }
-
-      let sonuc = ikiKat(5); // 10
-      let yeniSonuc = ikiKat(sonuc); // 20
-      console.log(yeniSonuc);
-
-      function myFunction() {
-        let age = 25;
-        function newFunc() {
-          console.log(age);
-        }
-      }
-
-      myFunction();
-
-      async function fecthProducts(a, b) {
-        const response = await fetch('https://fakestoreapi.com/products');
-        const data = await response.json();
-
-        a(data);
-        console.log(b);
-      }
-
-      function displayMessage(data) {
-        data.forEach((product) => {
-          console.log(product.title);
+      function processStudents(arr, callback) {
+        let result = [];
+        // for (let i = 0; i < arr.length; i++) {
+        //   if (callback(arr[i])) {
+        //     result.push(arr[i]);
+        //   }
+        // }
+        arr.forEach(function (student) {
+          if (callback(student)) {
+            result.push(student);
+          }
         });
+        return result;
       }
+      console.log(
+        processStudents(students, function (student) {
+          return student.grade >= 85;
+        })
+      );
 
-      // fecthProducts(displayMessage, '12');
+      console.log(
+        processStudents(students, function (student) {
+          return student.grade < 75;
+        })
+      );
 
-      function mesajUretici() {
-        const rastgeleSayi = Math.random();
-        if (rastgeleSayi > 0.5) {
-          return function () {
-            console.log('Harika! Bugün şanslı günündesin.');
-          };
-        } else {
-          return function () {
-            console.log('Maalesef... Bugün pek iyi gitmiyor.');
-          };
-        }
-      }
-
-      const mesaj = mesajUretici();
-      mesaj();
-
+      // 	•	processStudents(students, student => student.age > 20) çağrılınca 20 yaşından büyükleri döndürmeli.
+      // 	•	processStudents(students, student => student.grade < 75) çağrılınca notu düşük olanları döndürmeli.
     </script>
   </body>
 </html>
