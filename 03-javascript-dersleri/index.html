@@ -6,105 +6,192 @@
     <title>Document</title>
   </head>
   <body>
-    <button>Veriyi Getir</button>
     <script>
-      const kullanici = {
-        isim: 'Emin',
-        soyisim: 'Başbayan',
-        email: 'basbayanemin@gmail.com',
-        karsilama: function () {
-          console.log(
-            `Sayın ${this.isim} ${this.soyisim} hoş geldiniz! 
-Güncel e-posta adresiniz ${this.email}`
-          );
-        },
-      };
+      // [1, 2, 3, 4]
+      //   .forEach(function (value) {})
 
-      const projeMesajlari = {
-        basariliMesaji: 'İşlem Başarılı!',
-        basarisizMesaji: 'İşlem Başarısız!',
-        hataMesaji: 'Hatalı İşlem',
-        basariliIslem: function () {
-          alert(this.basariliMesaji);
-        },
-        basarisizIslem() {
-          alert(this.basarisizMesaji);
-        },
-        hataliIslem: function (hata) {
-          alert(hata ? hata : this.hataMesaji);
-        },
-      };
+      //   [(1, 2, 3, 4)].forEach((value) => {})
 
-      const hata = true;
-      document.querySelector('button').addEventListener('click', function () {
-        if (hata) {
-          // projeMesajlari.hataliIslem("Burada data maalesef gelmedi");
-          //projeMesajlari.hataliIslem();
-          projeMesajlari['hataliIslem']();
-        } else {
-          projeMesajlari.basariliIslem();
-        }
+      //   [(1, 2, 3, 4)].map(function (value) {
+      //     return value;
+      //   });
+
+      // [1, 2, 3, 4].filter((value) => value === 4);
+
+      // [1, 2, 3, 4].filter((value) => {
+      //   const newValue = value === 4;
+      //   return newValue;
+      // });
+
+      const santigratlar = [0, 20, 30, 100];
+
+      const fahrenheitlar = santigratlar.map(function (sicaklik) {
+        return (sicaklik * 9) / 5 + 32;
       });
 
-      [].concat();
-      ''.repeat();
+      console.log(fahrenheitlar);
 
-      // projeMesajlari.hataliIslem();
+      const isimler = ['ayşe', 'mehmet', 'cemre', 'burak'];
 
-      kullanici.karsilama();
+      const duzenliIsimler = isimler.map(
+        (isim) => isim.charAt(0).toUpperCase() + isim.slice(1)
+      );
 
-      kullaniciKarsilama(kullanici);
+      console.log('isimler: ', isimler);
+      console.log('duzenliIsimler: ', duzenliIsimler);
 
-      function kullaniciKarsilama(kullaniciBilgisi) {
-        console.log(
-          `Sayın ${kullaniciBilgisi.isim} ${kullaniciBilgisi.soyisim} hoş geldiniz! 
-Güncel e-posta adresiniz ${kullaniciBilgisi.email}`
-        );
+      const urunler = [
+        { isim: 'Laptop', fiyat: 15000 },
+        { isim: 'Telefon', fiyat: 10000 },
+        { isim: 'Tablet', fiyat: 8000 },
+      ];
+
+      console.log(urunler.find((urun) => urun.isim === 'Telefon'));
+
+      const urunIsimleri = urunler.map(
+        (urun) => urun.isim.charAt(0).toLowerCase() + urun.isim.slice(1)
+      );
+
+      console.log(urunIsimleri);
+
+      const sepet = [
+        { ad: 'Kitap', fiyat: 120 },
+        { ad: 'Defter', fiyat: 30 },
+        { ad: 'Kalem', fiyat: 15 },
+      ];
+
+      const sepetToplam = sepet.reduce(function (toplam, urun) {
+        return toplam + urun.fiyat;
+      }, 100);
+
+      console.log(sepetToplam);
+
+      const kdvliFiyatlar = sepet.map((urun) => {
+        return {
+          ad: urun.ad,
+          fiyat: (urun.fiyat * 1.18).toFixed(2),
+        };
+      });
+
+      console.log(kdvliFiyatlar);
+
+      function selamVer(isim) {
+        return `Merhaba, ${isim}`;
       }
 
-      const student = {
-        name: 'Mert',
-        grade: 11,
-        introduce() {
-          console.log(
-            `${this.name} isimli öğrenci ${this.grade}. sınıfta.`,
-            this
-          );
+      const selamVar = (isim) => {
+        return `Merhaba, ${isim}`;
+      };
+
+      const selamVar2 = (isim) => `Merhaba, ${isim}`;
+
+      const kareAl = (sayi) => {
+        return sayi * sayi;
+      };
+
+      const rastgeleSayi = () => {
+        return Math.floor(Math.random() * 100);
+      };
+
+      // setTimeout(() => {
+      //   console.log('2 saniye sonra çalışacak!');
+      // }, 5000);
+
+      // alert('Hoş geldiniz!');
+
+      // setTimeout(() => {
+      //   alert('Bilgilendirme: Site çerez kullanmaktadır.');
+      // }, 2000);
+
+      // console.log('Önce çalışacak!');
+
+      const id = setInterval(() => {
+        console.log("2 saniye'de bir tekrar çalışır!");
+      }, 2000);
+
+      setTimeout(() => {
+        clearInterval(id);
+      }, 3000);
+
+      const sicakliklar = [22, 35, 28, 40, 19, 33, 25];
+
+      const yeniSicaklik = sicakliklar.filter((sicaklik) => sicaklik > 30);
+
+      const sicaklikBul = sicakliklar.find((sicaklik) => sicaklik === 40);
+
+      console.log(yeniSicaklik);
+      console.log(sicaklikBul);
+
+      const kitaplar = [
+        { ad: 'Yüzüklerin Efendisi', sayfa: 1200 },
+        { ad: 'Küçük Prens', sayfa: 95 },
+        { ad: 'Sefiller', sayfa: 1463 },
+        { ad: 'Hayvan Çiftliği', sayfa: 112 },
+      ];
+
+      console.log(
+        kitaplar
+          .filter((kitap) => kitap.sayfa > 1000)
+          .map((kitap) => kitap.sayfa)
+      );
+
+      const izinDurumlari = [false, false, false, false];
+
+      const herkesGetirdiMi = izinDurumlari.every((durum) => durum === true);
+
+      console.log(herkesGetirdiMi);
+
+      const urunler2 = [
+        { ad: 'Laptop', stok: 12 },
+        { ad: 'Klavye', stok: 5 },
+        { ad: 'Mouse', stok: 0 },
+      ];
+
+      const hepsiStoktaMi = urunler2.every(function (urun, index) {
+        console.log(index);
+
+        return urun.stok > 0;
+      });
+
+      console.log(hepsiStoktaMi);
+
+      const ogrenci = {
+        ad: 'Mehmet',
+        selamla() {
+          console.log('Merhaba, ben ' + this.ad);
         },
       };
 
-      const student2 = {
-        name: 'Ayşe',
-        grade: 10,
-        introduce: student.introduce,
+      const ogrenci2 = {
+        ad: 'Mehmet',
+        selamla: () => {
+          console.log('Merhaba, ben ' + this.ad);
+        },
       };
 
-      student.introduce();
-      student2.introduce();
+      ogrenci.selamla();
 
-      // window.alert();
+      const oyuncu = {
+        isim: 'Ayşe',
+        tanit: function () {
+          setTimeout(function () {
+            console.log('Oyuncu: ' + this.isim);
+          }, 2000);
+        },
+      };
 
-      const tanit = student.introduce;
-      tanit();
+      const oyuncu2 = {
+        isim: 'Ayşe',
+        tanit: function () {
+          setTimeout(() => {
+            console.log('Oyuncu: ' + this.isim);
+          }, 2000);
+        },
+      };
 
-      // try {
-      //   fullName.toLowerCase();
-      // } catch (error) {
-      //   console.log(error);
-      // }
+      oyuncu.tanit();
 
-      function tekrarEt(metin) {
-        try {
-          return (metin.toUpperCase() + ' ').repeat(3);
-        } catch (hata) {
-          console.log(hata);
-
-          return 'Lütfen sadece metin giriniz.';
-        }
-      }
-
-      console.log(tekrarEt('Selam'));
-      console.log(tekrarEt(45));
+      oyuncu2.tanit();
     </script>
   </body>
 </html>
