@@ -6,103 +6,105 @@
     <title>Document</title>
   </head>
   <body>
+    <button>Veriyi Getir</button>
     <script>
-      const students = [
-        { id: 1, name: 'Ahmet', age: 21, grade: 85 },
-        { id: 2, name: 'Ayşe', age: 19, grade: 92 },
-        { id: 3, name: 'Mehmet', age: 22, grade: 67 },
-        { id: 4, name: 'Fatma', age: 20, grade: 74 },
-        { id: 5, name: 'Ali', age: 23, grade: 90 },
-      ];
+      const kullanici = {
+        isim: 'Emin',
+        soyisim: 'Başbayan',
+        email: 'basbayanemin@gmail.com',
+        karsilama: function () {
+          console.log(
+            `Sayın ${this.isim} ${this.soyisim} hoş geldiniz! 
+Güncel e-posta adresiniz ${this.email}`
+          );
+        },
+      };
 
-      // Sorular
-      // 	1.	Bir function yaz: getNamesUpperCase(arr)
-      // 	•	Tüm öğrencilerin isimlerini büyük harfe çevirip yeni bir array döndürsün.
-      // 	•	İçeride sadece for veya forEach kullanılabilir.
+      const projeMesajlari = {
+        basariliMesaji: 'İşlem Başarılı!',
+        basarisizMesaji: 'İşlem Başarısız!',
+        hataMesaji: 'Hatalı İşlem',
+        basariliIslem: function () {
+          alert(this.basariliMesaji);
+        },
+        basarisizIslem() {
+          alert(this.basarisizMesaji);
+        },
+        hataliIslem: function (hata) {
+          alert(hata ? hata : this.hataMesaji);
+        },
+      };
 
-      function getNamesUpperCase(arr) {
-        let dizi = [];
-        for (let i = 0; i < arr.length; i++) {
-          dizi.push(arr[i].name.toUpperCase());
+      const hata = true;
+      document.querySelector('button').addEventListener('click', function () {
+        if (hata) {
+          // projeMesajlari.hataliIslem("Burada data maalesef gelmedi");
+          //projeMesajlari.hataliIslem();
+          projeMesajlari['hataliIslem']();
+        } else {
+          projeMesajlari.basariliIslem();
         }
-        return dizi;
+      });
+
+      [].concat();
+      ''.repeat();
+
+      // projeMesajlari.hataliIslem();
+
+      kullanici.karsilama();
+
+      kullaniciKarsilama(kullanici);
+
+      function kullaniciKarsilama(kullaniciBilgisi) {
+        console.log(
+          `Sayın ${kullaniciBilgisi.isim} ${kullaniciBilgisi.soyisim} hoş geldiniz! 
+Güncel e-posta adresiniz ${kullaniciBilgisi.email}`
+        );
       }
 
-      console.log(getNamesUpperCase(students));
+      const student = {
+        name: 'Mert',
+        grade: 11,
+        introduce() {
+          console.log(
+            `${this.name} isimli öğrenci ${this.grade}. sınıfta.`,
+            this
+          );
+        },
+      };
 
-      // 	2.	Bir function yaz: getHighGrades(arr)
-      // 	•	Notu 80 üstü olan öğrencileri döndürsün.
-      function getHighGrades(arr) {
-        const puan = [];
-        for (let i = 0; i < arr.length; i++) {
-          if (arr[i].grade > 80) {
-            puan.push(arr[i]);
-          }
-        }
-        return puan;
-      }
-      console.log(getHighGrades(students));
+      const student2 = {
+        name: 'Ayşe',
+        grade: 10,
+        introduce: student.introduce,
+      };
 
-      // 	3.	Bir function yaz: getAverageGrade(arr)
-      // 	•	Tüm öğrencilerin notlarının ortalamasını hesaplasın.
+      student.introduce();
+      student2.introduce();
 
-      function getAverageGrade(arr) {
-        let toplam = 0;
-        for (let i = 0; i < arr.length; i++) {
-          toplam += arr[i].grade;
-        }
-        return toplam / arr.length;
-      }
-      console.log(getAverageGrade(students));
+      // window.alert();
 
-      // 	4.	Bir function yaz: findTopStudent(arr)
-      // 	•	En yüksek nota sahip öğrenciyi bulsun.
+      const tanit = student.introduce;
+      tanit();
 
-      function findTopStudent(arr) {
-        let top = arr[0];
-
-        for (let i = 1; i < arr.length; i++) {
-          if (arr[i].grade > top.grade) {
-            top = arr[i];
-          }
-        }
-        return top;
-      }
-      console.log(findTopStudent(students));
-
-      // 	5.	Bir higher-order function yaz:
-      // function processStudents(arr, callback) {
-      //   // arr üzerinde dönsün ve callback ile filtreleme/işleme yapsın
+      // try {
+      //   fullName.toLowerCase();
+      // } catch (error) {
+      //   console.log(error);
       // }
 
-      function processStudents(arr, callback) {
-        let result = [];
-        // for (let i = 0; i < arr.length; i++) {
-        //   if (callback(arr[i])) {
-        //     result.push(arr[i]);
-        //   }
-        // }
-        arr.forEach(function (student) {
-          if (callback(student)) {
-            result.push(student);
-          }
-        });
-        return result;
+      function tekrarEt(metin) {
+        try {
+          return (metin.toUpperCase() + ' ').repeat(3);
+        } catch (hata) {
+          console.log(hata);
+
+          return 'Lütfen sadece metin giriniz.';
+        }
       }
-      console.log(
-        processStudents(students, function (student) {
-          return student.grade >= 85;
-        })
-      );
 
-      console.log(
-        processStudents(students, function (student) {
-          return student.grade < 75;
-        })
-      );
-
-      // 	•	processStudents(students, student => student.age > 20) çağrılınca 20 yaşından büyükleri döndürmeli.
-      // 	•	processStudents(students, student => student.grade < 75) çağrılınca notu düşük olanları döndürmeli.
+      console.log(tekrarEt('Selam'));
+      console.log(tekrarEt(45));
     </script>
   </body>
 </html>
