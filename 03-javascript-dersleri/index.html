@@ -4,45 +4,118 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .list {
+        display: none;
+      }
+    </style>
   </head>
   <body>
+    <h1>Hello</h1>
+    <button
+      id="myBtn"
+      name="btn"
+      class="btn bnt-lg btn-primary"
+      data-yeni-ozellik="5554443323"
+    >
+      Click
+    </button>
+
+    <ul>
+      <li class="li-tag">Kalem</li>
+      <li class="li-tag">Defter</li>
+      <li class="li-tag">Kitap</li>
+      <li class="li-tag">Silgi</li>
+    </ul>
+
+    <input type="text" id="myInput">
+
+    <ul>
+      <li class="li-tag">Kalem</li>
+      <li class="li-tag">Defter</li>
+      <li class="li-tag">Kitap</li>
+      <li class="li-tag">Silgi</li>
+    </ul>
+
+    <div id="uyari">
+      Bu yazı görünür.
+      <span style="display: none" id="gizli">Bu yazı gizlidir.</span>
+    </div>
+
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqIdF8I5Rzo3KJVD6VR3EizUwi8w9CCziDDQ&s"
+      alt=""
+    />
+
     <script>
-      const sayilar = [1, { id: 1, name: 'Emin' }, 3];
-      const [bir, , uc] = sayilar;
+      console.log(document.URL);
+      console.log(document.title);
+      console.log(document.all[6]);
 
-      console.log(sayilar[0]);
-      console.log(sayilar[1]);
-      console.log(sayilar[2]);
+      const myBtn = document.getElementById('myBtn');
+      // const myh1Tag = document.getElementsByTagName('h1');
+      const myh1Tag = document.querySelector('h1');
 
-      console.log(bir);
-      //     console.log(emin);
-      console.log(uc);
+      const logo = document.querySelector('img');
 
-      const kisi = {
-        id: 12321,
-        isim: 'Ahmet',
-        yas: 30,
-        email: 'ahmet@gmail.com',
-      };
+      // const liTag = document.getElementsByTagName('li');
+      //const liTag = document.getElementsByClassName('li-tag');
+      const liTag = document.querySelectorAll('.li-tag');
 
-      const isim = 'Emin';
+      const newText = document.getElementById('uyari');
+      const myInput = document.getElementById('myInput');
 
-      const { isim: kisiAdi, yas: kisiYasi } = kisi;
+      console.log(newText.innerText);
+      console.log(newText.textContent);
+      console.log(newText.innerHTML);
 
-      console.log(kisiAdi);
-      console.log(kisiYasi);
+      myBtn.addEventListener('click', (event) => {
+        console.log(event.target.id);
+        console.log(event.target.name);
+        console.log(event.target.className);
 
-      const adres = { id: 12312, sehir: 'İstanbul', ulke: 'Türkiye' };
-      const { id, ...adresBilgileri } = adres;
+        console.log(myBtn.dataset.yeniOzellik);
 
-      const kisiBilgileri = { ...kisi, ...adresBilgileri, adresId: id };
+        myh1Tag.innerText = 'Değişti!';
 
-      console.log(kisiBilgileri);
+        console.log(myInput.value);
+        
 
-      const { sehir, ...gonderilecekVeriler } = kisiBilgileri;
+        console.log('HTMLCollection:', liTag);
 
-      console.log('kisiBilgileri: ', kisiBilgileri);
-      console.log('gonderilecekVeriler: ', gonderilecekVeriler);
+        const newLiTag = [...liTag];
+        const newLiTag2 = Array.from(liTag);
+
+        newLiTag.forEach((eleman) => {
+          console.log(newLiTag.indexOf(eleman));
+          console.log(eleman.innerHTML);
+          eleman.style.backgroundColor = 'red';
+          eleman.style.color = 'white';
+          eleman.innerText = 'Değişti!';
+          eleman.className = 'btn list';
+        });
+
+        // logo.src =
+        //   'https://everyday.codes/wp-content/uploads/2019/06/react-native-1024x631-1024x631.png';
+
+        logo.setAttribute(
+          'src',
+          'https://everyday.codes/wp-content/uploads/2019/06/react-native-1024x631-1024x631.png'
+        );
+
+        console.log(logo.getAttribute('src'));
+
+        // for (let eleman of liTag) {
+        //   console.log(eleman);
+
+        //   eleman.innerText = 'Değişti!';
+        // }
+
+        myh1Tag.style.backgroundColor = 'red';
+        myh1Tag.style.color = 'white';
+        myh1Tag.style.textAlign = 'center';
+        myh1Tag.className = 'btn';
+      });
     </script>
   </body>
 </html>
