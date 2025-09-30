@@ -7,191 +7,42 @@
   </head>
   <body>
     <script>
-      // [1, 2, 3, 4]
-      //   .forEach(function (value) {})
+      const sayilar = [1, { id: 1, name: 'Emin' }, 3];
+      const [bir, , uc] = sayilar;
 
-      //   [(1, 2, 3, 4)].forEach((value) => {})
+      console.log(sayilar[0]);
+      console.log(sayilar[1]);
+      console.log(sayilar[2]);
 
-      //   [(1, 2, 3, 4)].map(function (value) {
-      //     return value;
-      //   });
+      console.log(bir);
+      //     console.log(emin);
+      console.log(uc);
 
-      // [1, 2, 3, 4].filter((value) => value === 4);
-
-      // [1, 2, 3, 4].filter((value) => {
-      //   const newValue = value === 4;
-      //   return newValue;
-      // });
-
-      const santigratlar = [0, 20, 30, 100];
-
-      const fahrenheitlar = santigratlar.map(function (sicaklik) {
-        return (sicaklik * 9) / 5 + 32;
-      });
-
-      console.log(fahrenheitlar);
-
-      const isimler = ['ayşe', 'mehmet', 'cemre', 'burak'];
-
-      const duzenliIsimler = isimler.map(
-        (isim) => isim.charAt(0).toUpperCase() + isim.slice(1)
-      );
-
-      console.log('isimler: ', isimler);
-      console.log('duzenliIsimler: ', duzenliIsimler);
-
-      const urunler = [
-        { isim: 'Laptop', fiyat: 15000 },
-        { isim: 'Telefon', fiyat: 10000 },
-        { isim: 'Tablet', fiyat: 8000 },
-      ];
-
-      console.log(urunler.find((urun) => urun.isim === 'Telefon'));
-
-      const urunIsimleri = urunler.map(
-        (urun) => urun.isim.charAt(0).toLowerCase() + urun.isim.slice(1)
-      );
-
-      console.log(urunIsimleri);
-
-      const sepet = [
-        { ad: 'Kitap', fiyat: 120 },
-        { ad: 'Defter', fiyat: 30 },
-        { ad: 'Kalem', fiyat: 15 },
-      ];
-
-      const sepetToplam = sepet.reduce(function (toplam, urun) {
-        return toplam + urun.fiyat;
-      }, 100);
-
-      console.log(sepetToplam);
-
-      const kdvliFiyatlar = sepet.map((urun) => {
-        return {
-          ad: urun.ad,
-          fiyat: (urun.fiyat * 1.18).toFixed(2),
-        };
-      });
-
-      console.log(kdvliFiyatlar);
-
-      function selamVer(isim) {
-        return `Merhaba, ${isim}`;
-      }
-
-      const selamVar = (isim) => {
-        return `Merhaba, ${isim}`;
+      const kisi = {
+        id: 12321,
+        isim: 'Ahmet',
+        yas: 30,
+        email: 'ahmet@gmail.com',
       };
 
-      const selamVar2 = (isim) => `Merhaba, ${isim}`;
+      const isim = 'Emin';
 
-      const kareAl = (sayi) => {
-        return sayi * sayi;
-      };
+      const { isim: kisiAdi, yas: kisiYasi } = kisi;
 
-      const rastgeleSayi = () => {
-        return Math.floor(Math.random() * 100);
-      };
+      console.log(kisiAdi);
+      console.log(kisiYasi);
 
-      // setTimeout(() => {
-      //   console.log('2 saniye sonra çalışacak!');
-      // }, 5000);
+      const adres = { id: 12312, sehir: 'İstanbul', ulke: 'Türkiye' };
+      const { id, ...adresBilgileri } = adres;
 
-      // alert('Hoş geldiniz!');
+      const kisiBilgileri = { ...kisi, ...adresBilgileri, adresId: id };
 
-      // setTimeout(() => {
-      //   alert('Bilgilendirme: Site çerez kullanmaktadır.');
-      // }, 2000);
+      console.log(kisiBilgileri);
 
-      // console.log('Önce çalışacak!');
+      const { sehir, ...gonderilecekVeriler } = kisiBilgileri;
 
-      const id = setInterval(() => {
-        console.log("2 saniye'de bir tekrar çalışır!");
-      }, 2000);
-
-      setTimeout(() => {
-        clearInterval(id);
-      }, 3000);
-
-      const sicakliklar = [22, 35, 28, 40, 19, 33, 25];
-
-      const yeniSicaklik = sicakliklar.filter((sicaklik) => sicaklik > 30);
-
-      const sicaklikBul = sicakliklar.find((sicaklik) => sicaklik === 40);
-
-      console.log(yeniSicaklik);
-      console.log(sicaklikBul);
-
-      const kitaplar = [
-        { ad: 'Yüzüklerin Efendisi', sayfa: 1200 },
-        { ad: 'Küçük Prens', sayfa: 95 },
-        { ad: 'Sefiller', sayfa: 1463 },
-        { ad: 'Hayvan Çiftliği', sayfa: 112 },
-      ];
-
-      console.log(
-        kitaplar
-          .filter((kitap) => kitap.sayfa > 1000)
-          .map((kitap) => kitap.sayfa)
-      );
-
-      const izinDurumlari = [false, false, false, false];
-
-      const herkesGetirdiMi = izinDurumlari.every((durum) => durum === true);
-
-      console.log(herkesGetirdiMi);
-
-      const urunler2 = [
-        { ad: 'Laptop', stok: 12 },
-        { ad: 'Klavye', stok: 5 },
-        { ad: 'Mouse', stok: 0 },
-      ];
-
-      const hepsiStoktaMi = urunler2.every(function (urun, index) {
-        console.log(index);
-
-        return urun.stok > 0;
-      });
-
-      console.log(hepsiStoktaMi);
-
-      const ogrenci = {
-        ad: 'Mehmet',
-        selamla() {
-          console.log('Merhaba, ben ' + this.ad);
-        },
-      };
-
-      const ogrenci2 = {
-        ad: 'Mehmet',
-        selamla: () => {
-          console.log('Merhaba, ben ' + this.ad);
-        },
-      };
-
-      ogrenci.selamla();
-
-      const oyuncu = {
-        isim: 'Ayşe',
-        tanit: function () {
-          setTimeout(function () {
-            console.log('Oyuncu: ' + this.isim);
-          }, 2000);
-        },
-      };
-
-      const oyuncu2 = {
-        isim: 'Ayşe',
-        tanit: function () {
-          setTimeout(() => {
-            console.log('Oyuncu: ' + this.isim);
-          }, 2000);
-        },
-      };
-
-      oyuncu.tanit();
-
-      oyuncu2.tanit();
+      console.log('kisiBilgileri: ', kisiBilgileri);
+      console.log('gonderilecekVeriler: ', gonderilecekVeriler);
     </script>
   </body>
 </html>
