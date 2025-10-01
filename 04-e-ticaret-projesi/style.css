@@ -214,3 +214,57 @@ body {
 }
 
 /* Hero End */
+
+/* Category Start */
+/* Categories Section */
+.categories {
+  padding: var(--spacing-xxl) 0;
+  background: var(--color-bg-light);
+}
+
+.categories h2,
+.products h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  font-size: 2rem;
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.category-card {
+  background: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.category-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: var(--shadow-md);
+}
+
+.category-card i {
+  font-size: 4rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.category-card h3 {
+  font-size: 1.3rem;
+  color: var(--color-secondary);
+  text-transform: capitalize;
+}
+/* Category End */
