@@ -4,118 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      .list {
-        display: none;
-      }
-    </style>
   </head>
   <body>
-    <h1>Hello</h1>
-    <button
-      id="myBtn"
-      name="btn"
-      class="btn bnt-lg btn-primary"
-      data-yeni-ozellik="5554443323"
-    >
-      Click
-    </button>
+    <section>
+      <div>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+      </div>
+    </section>
 
-    <ul>
-      <li class="li-tag">Kalem</li>
-      <li class="li-tag">Defter</li>
-      <li class="li-tag">Kitap</li>
-      <li class="li-tag">Silgi</li>
+    <ul id="menu">
+      <li>Ana Sayfa</li>
+      <li>Hakkımızda</li>
+      <li>İletişim</li>
+      <span>span</span>
     </ul>
 
-    <input type="text" id="myInput">
+    <article>
+      <h3>Başlık 1</h3>
 
-    <ul>
-      <li class="li-tag">Kalem</li>
-      <li class="li-tag">Defter</li>
-      <li class="li-tag">Kitap</li>
-      <li class="li-tag">Silgi</li>
-    </ul>
-
-    <div id="uyari">
-      Bu yazı görünür.
-      <span style="display: none" id="gizli">Bu yazı gizlidir.</span>
-    </div>
-
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqIdF8I5Rzo3KJVD6VR3EizUwi8w9CCziDDQ&s"
-      alt=""
-    />
+      <h3>Başlık 2</h3>
+      ,
+      <h3>Başlık 3</h3>
+    </article>
 
     <script>
-      console.log(document.URL);
-      console.log(document.title);
-      console.log(document.all[6]);
+      const secondHeading = document.querySelectorAll('h3')[1];
+      console.log(document.querySelectorAll('h3'));
 
-      const myBtn = document.getElementById('myBtn');
-      // const myh1Tag = document.getElementsByTagName('h1');
-      const myh1Tag = document.querySelector('h1');
+      const yeniSpan = document.createElement('span');
+      yeniSpan.innerText = 'Bu önemli bir mesajdır.';
+      const yeniStrong = document.createElement('strong');
+      yeniStrong.innerText = 'Deneme';
+      document.body.append(yeniStrong, yeniSpan);
+      document.body.prepend(yeniStrong, yeniSpan);
 
-      const logo = document.querySelector('img');
+      console.log(secondHeading.previousElementSibling);
+      console.log(secondHeading.nextElementSibling);
 
-      // const liTag = document.getElementsByTagName('li');
-      //const liTag = document.getElementsByClassName('li-tag');
-      const liTag = document.querySelectorAll('.li-tag');
+      const baslik = document.querySelector('h2');
+      const altBaslik = document.createElement('h3');
+      altBaslik.innerText = 'Alt başlık buraya eklendi';
+      baslik.insertAdjacentElement('afterend', altBaslik);
 
-      const newText = document.getElementById('uyari');
-      const myInput = document.getElementById('myInput');
+      console.log(baslik);
+      
 
-      console.log(newText.innerText);
-      console.log(newText.textContent);
-      console.log(newText.innerHTML);
+      // const menu = document.getElementById('menu');
 
-      myBtn.addEventListener('click', (event) => {
-        console.log(event.target.id);
-        console.log(event.target.name);
-        console.log(event.target.className);
+      // console.log(menu.children[0]);
+      // console.log(menu.children[3].textContent);
 
-        console.log(myBtn.dataset.yeniOzellik);
+      // const h2Tag = document.querySelector('h2');
+      // const parent1 = h2Tag.parentElement;
+      // const parent2 = parent1.parentElement;
 
-        myh1Tag.innerText = 'Değişti!';
+      // console.log(h2Tag);
+      // console.log(parent1);
+      // console.log(parent2);
 
-        console.log(myInput.value);
-        
-
-        console.log('HTMLCollection:', liTag);
-
-        const newLiTag = [...liTag];
-        const newLiTag2 = Array.from(liTag);
-
-        newLiTag.forEach((eleman) => {
-          console.log(newLiTag.indexOf(eleman));
-          console.log(eleman.innerHTML);
-          eleman.style.backgroundColor = 'red';
-          eleman.style.color = 'white';
-          eleman.innerText = 'Değişti!';
-          eleman.className = 'btn list';
-        });
-
-        // logo.src =
-        //   'https://everyday.codes/wp-content/uploads/2019/06/react-native-1024x631-1024x631.png';
-
-        logo.setAttribute(
-          'src',
-          'https://everyday.codes/wp-content/uploads/2019/06/react-native-1024x631-1024x631.png'
-        );
-
-        console.log(logo.getAttribute('src'));
-
-        // for (let eleman of liTag) {
-        //   console.log(eleman);
-
-        //   eleman.innerText = 'Değişti!';
-        // }
-
-        myh1Tag.style.backgroundColor = 'red';
-        myh1Tag.style.color = 'white';
-        myh1Tag.style.textAlign = 'center';
-        myh1Tag.className = 'btn';
-      });
+      // parent2.remove();
     </script>
   </body>
 </html>
