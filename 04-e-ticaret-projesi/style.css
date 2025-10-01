@@ -268,3 +268,129 @@ body {
   text-transform: capitalize;
 }
 /* Category End */
+
+/* Products Start */
+
+/* Products Section */
+.products {
+  padding: var(--spacing-xxl) 0;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.filter-btn {
+  padding: 0.7rem 1.5rem;
+  border: 0.2rem solid var(--color-primary);
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-radius: var(--radius-round);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.product-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.product-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: var(--shadow-md);
+}
+
+.product-image {
+  width: 100%;
+  height: 30rem;
+  object-fit: contain;
+  padding: var(--spacing-sm);
+  background: var(--color-white);
+}
+
+.product-info {
+  padding: var(--spacing-md);
+}
+
+.product-title {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-secondary);
+  height: 3rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.product-category {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: var(--color-success);
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.stars {
+  color: var(--color-warning);
+}
+
+.add-to-cart {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1.6rem;
+  transition: background var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.add-to-cart:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Products End  */
