@@ -1,5 +1,6 @@
 const categoriesGridDOM = document.querySelector('.categories-grid');
 const productsGridDOM = document.querySelector('.products-grid');
+const filterButtons = document.getElementById('filterButtons');
 
 const categoryIcons = {
   electronics: 'bi-laptop',
@@ -14,6 +15,8 @@ async function fetchCategories() {
     const categories = await res.json();
 
     displayCategories(categories);
+
+    createFilterButtons(categories);
   } catch (error) {
     console.log(error);
     alert('Veri yüklenirken hata oldu: ' + error);
@@ -76,6 +79,18 @@ function displayProducts(products) {
     </div>
   </div>`;
     })
+    .join('');
+}
+
+function createFilterButtons(categories) {
+  filterButtons.innerHTML = categories
+    .map(
+      (category) => `
+        <button class="filter-btn ${category === 'all' ? 'active' : ''}">
+            ${category === 'all' ? 'Tümü' : category}
+        </button>
+    `
+    )
     .join('');
 }
 
