@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Ticaret Mağazası</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-
-    <h1>Hello</h1>
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda praesentium sapiente laudantium, sit aliquid quia eligendi ex cumque! Fugiat rerum obcaecati corrupti! Temporibus velit atque repellat quasi fugiat nesciunt. Porro!</p>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="logo">
+            <i class="bi bi-shop"></i>
+            <h1>ShopHub</h1>
+          </div>
+          <nav class="nav" id="nav">
+            <div class="nav-overlay" id="navOverlay"></div>
+            <div class="nav-menu">
+              <button class="nav-close" id="navClose">
+                <i class="bi bi-x-lg"></i>
+              </button>
+              <ul>
+                <li>
+                  <a href="#home"><i class="bi bi-house-door"></i> Ana Sayfa</a>
+                </li>
+                <li>
+                  <a href="#categories"
+                    ><i class="bi bi-grid"></i> Kategoriler</a
+                  >
+                </li>
+                <li>
+                  <a href="#products"><i class="bi bi-bag"></i> Ürünler</a>
+                </li>
+                <li>
+                  <a href="#contact"><i class="bi bi-envelope"></i> İletişim</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="cart">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-count">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
 
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
