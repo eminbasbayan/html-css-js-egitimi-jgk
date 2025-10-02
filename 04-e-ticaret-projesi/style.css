@@ -373,7 +373,8 @@ body {
   color: var(--color-warning);
 }
 
-.add-to-cart {
+.add-to-cart, 
+.remove-from-cart {
   width: 100%;
   padding: 0.8rem;
   background: var(--color-primary);
@@ -387,6 +388,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
+}
+
+.remove-from-cart{
+  background-color: var(--color-warning);
 }
 
 .add-to-cart:hover {
