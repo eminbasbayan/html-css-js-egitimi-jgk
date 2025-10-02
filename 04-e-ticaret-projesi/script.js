@@ -1,11 +1,19 @@
 const categoriesGridDOM = document.querySelector('.categories-grid');
 const productsGridDOM = document.querySelector('.products-grid');
 const filterButtons = document.getElementById('filterButtons');
+const cartBtnDOM = document.querySelector('.cart');
+const cartCountDOM = document.querySelector('.cart-count');
+
+cartBtnDOM.addEventListener('click', () => {
+  window.location.href = './cart.html';
+});
 
 // State
 let allProducts = [];
 let currentCategory = 'all';
-let cartItems = [];
+let cartItems = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : [];
 
 const API_URL = 'https://fakestoreapi.com';
 
@@ -136,6 +144,11 @@ async function filterByCategory(category) {
 }
 
 function addToCart(productId) {
+  //   localStorage.setItem("fullName", JSON.stringify("Emin Başbayan"));
+  //   localStorage.setItem("email", JSON.stringify("mail@mail.com"));
+  // localStorage.removeItem("fullName");
+  // localStorage.clear()
+
   let findProduct = allProducts.find((product) => product.id === productId);
 
   const findCarItem = cartItems.find((cartItem) => cartItem.id === productId);
@@ -159,14 +172,15 @@ function addToCart(productId) {
 
   console.log(cartItems);
 
-  const cartCountDOM = document.querySelector('.cart-count');
-
   cartCountDOM.textContent = cartItems.length;
 
   // alert(`${findProduct.title} Ürünü ` + 'Sepete Eklendi!');
+
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  cartCountDOM.textContent = cartItems.length;
   fetchCategories();
   fetchProducts();
 });
