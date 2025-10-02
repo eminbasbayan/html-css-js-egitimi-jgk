@@ -5,6 +5,7 @@ const filterButtons = document.getElementById('filterButtons');
 // State
 let allProducts = [];
 let currentCategory = 'all';
+let cartItems = [];
 
 const API_URL = 'https://fakestoreapi.com';
 
@@ -81,7 +82,7 @@ function displayProducts(products) {
         <span>(${product.rating.count})</span>
       </div>
       <p class="product-price">₺${product.price}</p>
-      <button class="add-to-cart">
+      <button class="add-to-cart" onclick="addToCart(${product.id})">
         <i class="bi bi-cart-plus"></i> Sepete Ekle
       </button>
     </div>
@@ -132,6 +133,37 @@ async function filterByCategory(category) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function addToCart(productId) {
+  let findProduct = allProducts.find((product) => product.id === productId);
+
+  const findCarItem = cartItems.find((cartItem) => cartItem.id === productId);
+
+  if (findCarItem) {
+    cartItems = cartItems.map((cartItem) => {
+      if (cartItem.id === findCarItem.id) {
+        return {
+          ...cartItem,
+          quantity: cartItem.quantity + 1,
+        };
+      }
+      return cartItem;
+    });
+
+    // findProduct = { ...findProduct, quantity: findCarItem.quantity + 1 };
+    // cartItems = [...cartItems, findProduct];
+  } else {
+    cartItems = [...cartItems, { ...findProduct, quantity: 1 }];
+  }
+
+  console.log(cartItems);
+
+  const cartCountDOM = document.querySelector('.cart-count');
+
+  cartCountDOM.textContent = cartItems.length;
+
+  // alert(`${findProduct.title} Ürünü ` + 'Sepete Eklendi!');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
