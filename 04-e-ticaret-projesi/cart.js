@@ -1,11 +1,20 @@
 const cartCountDOM = document.querySelector('.cart-count');
-const cartItemsListDOM = document.querySelector('#cartItemsList');
-const cartContainerDOM = document.querySelector('#cartContainer');
-const emptyCartDOM = document.querySelector('#emptyCart');
+const cartItemsListDOM = document.getElementById('cartItemsList');
+const cartContainerDOM = document.getElementById('cartContainer');
+const emptyCartDOM = document.getElementById('emptyCart');
+const subtotalDOM = document.getElementById('subtotal');
+const shippingDOM = document.getElementById('shipping');
+const taxDOM = document.getElementById('tax');
+const grandTotalDOM = document.getElementById('grandTotal');
+const totalItemsDOM = document.getElementById('totalItems');
 
 let cartItems = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : [];
+let araToplam = 0;
+const kargoBedeli = 35;
+const KDV = 20;
+let genelToplam = 0;
 
 function emptyCart(cartItems) {
   if (cartItems.length) {
@@ -90,9 +99,10 @@ function updateQuantity(cartItemId, value) {
       });
     }
   }
-
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  cartTotal(cartItems);
   displayCartItems(cartItems);
+  totalItems(cartItems)
 }
 
 function removeFromCart(cartItemId) {
@@ -105,9 +115,37 @@ function removeFromCart(cartItemId) {
   console.log(cartItems.length);
 
   emptyCart(cartItems);
+  cartTotal(cartItems);
+  totalItems(cartItems)
+}
+
+function cartTotal(cartItems) {
+  if (cartItems.length) {
+    araToplam = cartItems.reduce((toplam, eleman) => {
+      return toplam + eleman.quantity * eleman.price;
+    }, 0);
+    const kdvToplam = (araToplam * KDV) / 100;
+    subtotalDOM.innerText = `₺${araToplam.toFixed(2)}`;
+    taxDOM.innerText = `${kdvToplam.toFixed(2)}`;
+    shippingDOM.innerText = `₺${kargoBedeli}`;
+    genelToplam = kdvToplam + araToplam + kargoBedeli;
+    grandTotalDOM.innerText = `₺${genelToplam.toFixed(2)}`;
+  } else {
+    subtotalDOM.innerText = `₺${araToplam}`;
+    taxDOM.innerText = `₺0`;
+    shippingDOM.innerText = `₺${kargoBedeli}`;
+  }
+}
+
+function totalItems(cartItems) {
+  totalItemsDOM.innerText = cartItems.reduce((toplam, eleman) => {
+    return toplam + eleman.quantity;
+  }, 0);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   cartCountDOM.textContent = cartItems.length;
   displayCartItems(cartItems);
+  cartTotal(cartItems);
+  totalItems(cartItems);
 });
