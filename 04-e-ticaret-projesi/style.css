@@ -394,3 +394,15 @@ body {
 }
 
 /* Products End  */
+
+
+.loading {
+  text-align: center;
+  padding: var(--spacing-lg);
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}

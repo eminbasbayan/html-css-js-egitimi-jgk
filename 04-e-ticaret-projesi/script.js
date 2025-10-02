@@ -2,6 +2,12 @@ const categoriesGridDOM = document.querySelector('.categories-grid');
 const productsGridDOM = document.querySelector('.products-grid');
 const filterButtons = document.getElementById('filterButtons');
 
+// State
+let allProducts = [];
+let currentCategory = 'all';
+
+const API_URL = 'https://fakestoreapi.com';
+
 const categoryIcons = {
   electronics: 'bi-laptop',
   jewelery: 'bi-gem',
@@ -16,7 +22,7 @@ async function fetchCategories() {
 
     displayCategories(categories);
 
-    createFilterButtons(categories);
+    createFilterButtons(['all', ...categories]);
   } catch (error) {
     console.log(error);
     alert('Veri yüklenirken hata oldu: ' + error);
@@ -27,10 +33,12 @@ function displayCategories(categories) {
   categoriesGridDOM.innerHTML = categories
     .map((category) => {
       const icon = categoryIcons[category];
-      return `<div class="category-card">
+      return `
+      <div class="category-card" onclick="filterByCategory(\`${category}\`)">
         <i class="bi ${icon}"></i>
       <h3>${category}</h3>
-    </div>`;
+    </div>
+    `;
     })
     .join('');
 }
@@ -38,9 +46,9 @@ function displayCategories(categories) {
 async function fetchProducts() {
   try {
     const res = await fetch('https://fakestoreapi.com/products');
-    const products = await res.json();
-
-    displayProducts(products);
+    allProducts = await res.json();
+    console.log(allProducts);
+    displayProducts(allProducts);
   } catch (error) {
     console.log(error);
     alert('Veri yüklenirken hata oldu: ' + error);
@@ -86,12 +94,44 @@ function createFilterButtons(categories) {
   filterButtons.innerHTML = categories
     .map(
       (category) => `
-        <button class="filter-btn ${category === 'all' ? 'active' : ''}">
+        <button class="filter-btn ${
+          category === 'all' ? 'active' : ''
+        }" onclick="filterByCategory(\`${category}\`)">
             ${category === 'all' ? 'Tümü' : category}
         </button>
     `
     )
     .join('');
+}
+
+async function filterByCategory(category) {
+  currentCategory = category;
+
+  // Update active button
+  document.querySelectorAll('.filter-btn').forEach((btn) => {
+    btn.classList.remove('active');
+    if (btn.textContent.trim() === (category === 'all' ? 'Tümü' : category)) {
+      btn.classList.add('active');
+    }
+  });
+
+  productsGridDOM.innerHTML = `<div class="loading">
+  <i class="bi bi-hourglass-split"></i> Yükleniyor...
+</div>`;
+
+  try {
+    let products;
+    if (category === 'all') {
+      products = allProducts;
+    } else {
+      const response = await fetch(`${API_URL}/products/category/${category}`);
+      products = await response.json();
+    }
+
+    displayProducts(products);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
