@@ -28,7 +28,9 @@
               </button>
               <ul>
                 <li>
-                  <a href="index.html"><i class="bi bi-house-door"></i> Ana Sayfa</a>
+                  <a href="index.html"
+                    ><i class="bi bi-house-door"></i> Ana Sayfa</a
+                  >
                 </li>
                 <li>
                   <a href="index.html#categories"
@@ -36,10 +38,14 @@
                   >
                 </li>
                 <li>
-                  <a href="index.html#products"><i class="bi bi-bag"></i> Ürünler</a>
+                  <a href="index.html#products"
+                    ><i class="bi bi-bag"></i> Ürünler</a
+                  >
                 </li>
                 <li>
-                  <a href="index.html#contact"><i class="bi bi-envelope"></i> İletişim</a>
+                  <a href="index.html#contact"
+                    ><i class="bi bi-envelope"></i> İletişim</a
+                  >
                 </li>
               </ul>
             </div>
@@ -57,7 +63,10 @@
     <section class="cart-hero">
       <div class="container">
         <h2><i class="bi bi-cart-check"></i> Sepetim</h2>
-        <p>Alışveriş sepetinizdeki ürünleri kontrol edin ve siparişinizi tamamlayın</p>
+        <p>
+          Alışveriş sepetinizdeki ürünleri kontrol edin ve siparişinizi
+          tamamlayın
+        </p>
       </div>
     </section>
     <!-- Cart Hero End -->
@@ -71,19 +80,27 @@
             <i class="bi bi-cart-x"></i>
           </div>
           <h3>Sepetiniz Boş</h3>
-          <p>Henüz sepetinize ürün eklemediniz. Alışverişe başlamak için ürünleri keşfedin!</p>
+          <p>
+            Henüz sepetinize ürün eklemediniz. Alışverişe başlamak için ürünleri
+            keşfedin!
+          </p>
           <a href="index.html" class="shop-now-btn">
             <i class="bi bi-arrow-left"></i> Alışverişe Devam Et
           </a>
         </div>
 
         <!-- Cart Items -->
-        <div class="cart-container" id="cartContainer" style="display: none;">
+        <div class="cart-container" id="cartContainer" style="display: none">
           <div class="cart-items">
             <div class="cart-header">
-              <h3><i class="bi bi-basket"></i> Sepetim (<span id="totalItems">0</span> ürün)</h3>
+              <h3>
+                <i class="bi bi-basket"></i> Sepetim (<span id="totalItems"
+                  >0</span
+                >
+                ürün)
+              </h3>
             </div>
-            
+
             <div class="cart-items-list" id="cartItemsList">
               <!-- Cart items will be dynamically inserted here -->
             </div>
@@ -93,33 +110,33 @@
           <div class="cart-summary">
             <div class="summary-card">
               <h3><i class="bi bi-receipt"></i> Sipariş Özeti</h3>
-              
+
               <div class="summary-row">
                 <span>Ara Toplam:</span>
                 <span id="subtotal">₺0.00</span>
               </div>
-              
+
               <div class="summary-row">
                 <span>Kargo:</span>
                 <span id="shipping">₺0.00</span>
               </div>
-              
+
               <div class="summary-row">
                 <span>KDV (%20):</span>
                 <span id="tax">₺0.00</span>
               </div>
-              
+
               <div class="summary-divider"></div>
-              
+
               <div class="summary-row total">
                 <span>Toplam:</span>
                 <span id="grandTotal">₺0.00</span>
               </div>
-              
+
               <button class="checkout-btn" id="checkoutBtn">
                 <i class="bi bi-credit-card"></i> Ödemeye Geç
               </button>
-              
+
               <a href="index.html" class="continue-shopping">
                 <i class="bi bi-arrow-left"></i> Alışverişe Devam Et
               </a>
@@ -129,6 +146,62 @@
       </div>
     </section>
     <!-- Cart Content End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><i class="bi bi-shop"></i> ShopHub</h3>
+            <p>
+              En kaliteli ürünleri en uygun fiyatlarla sunan online alışveriş
+              platformu.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3><i class="bi bi-link-45deg"></i> Hızlı Linkler</h3>
+            <ul>
+              <li>
+                <a href="#home"
+                  ><i class="bi bi-chevron-right"></i> Ana Sayfa</a
+                >
+              </li>
+              <li>
+                <a href="#categories"
+                  ><i class="bi bi-chevron-right"></i> Kategoriler</a
+                >
+              </li>
+              <li>
+                <a href="#products"
+                  ><i class="bi bi-chevron-right"></i> Ürünler</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3><i class="bi bi-telephone"></i> İletişim</h3>
+            <p><i class="bi bi-envelope"></i> info@shophub.com</p>
+            <p><i class="bi bi-phone"></i> +90 123 456 78 90</p>
+            <p><i class="bi bi-geo-alt"></i> İstanbul, Türkiye</p>
+          </div>
+          <div class="footer-section">
+            <h3><i class="bi bi-share"></i> Bizi Takip Edin</h3>
+            <div class="social-links">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            <i class="bi bi-c-circle"></i> 2025 ShopHub. Tüm hakları saklıdır.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
 
     <script src="./cart.js"></script>
   </body>
