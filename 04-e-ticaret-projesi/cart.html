@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sepetim - ShopHub</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="logo">
+            <i class="bi bi-shop"></i>
+            <h1>ShopHub</h1>
+          </div>
+          <nav class="nav" id="nav">
+            <div class="nav-overlay" id="navOverlay"></div>
+            <div class="nav-menu">
+              <button class="nav-close" id="navClose">
+                <i class="bi bi-x-lg"></i>
+              </button>
+              <ul>
+                <li>
+                  <a href="index.html"><i class="bi bi-house-door"></i> Ana Sayfa</a>
+                </li>
+                <li>
+                  <a href="index.html#categories"
+                    ><i class="bi bi-grid"></i> Kategoriler</a
+                  >
+                </li>
+                <li>
+                  <a href="index.html#products"><i class="bi bi-bag"></i> Ürünler</a>
+                </li>
+                <li>
+                  <a href="index.html#contact"><i class="bi bi-envelope"></i> İletişim</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="cart active">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-count">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Cart Hero Start -->
+    <section class="cart-hero">
+      <div class="container">
+        <h2><i class="bi bi-cart-check"></i> Sepetim</h2>
+        <p>Alışveriş sepetinizdeki ürünleri kontrol edin ve siparişinizi tamamlayın</p>
+      </div>
+    </section>
+    <!-- Cart Hero End -->
+
+    <!-- Cart Content Start -->
+    <section class="cart-content">
+      <div class="container">
+        <!-- Empty Cart State -->
+        <div class="empty-cart" id="emptyCart">
+          <div class="empty-cart-icon">
+            <i class="bi bi-cart-x"></i>
+          </div>
+          <h3>Sepetiniz Boş</h3>
+          <p>Henüz sepetinize ürün eklemediniz. Alışverişe başlamak için ürünleri keşfedin!</p>
+          <a href="index.html" class="shop-now-btn">
+            <i class="bi bi-arrow-left"></i> Alışverişe Devam Et
+          </a>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="cart-container" id="cartContainer" style="display: none;">
+          <div class="cart-items">
+            <div class="cart-header">
+              <h3><i class="bi bi-basket"></i> Sepetim (<span id="totalItems">0</span> ürün)</h3>
+            </div>
+            
+            <div class="cart-items-list" id="cartItemsList">
+              <!-- Cart items will be dynamically inserted here -->
+            </div>
+          </div>
+
+          <!-- Cart Summary -->
+          <div class="cart-summary">
+            <div class="summary-card">
+              <h3><i class="bi bi-receipt"></i> Sipariş Özeti</h3>
+              
+              <div class="summary-row">
+                <span>Ara Toplam:</span>
+                <span id="subtotal">₺0.00</span>
+              </div>
+              
+              <div class="summary-row">
+                <span>Kargo:</span>
+                <span id="shipping">₺0.00</span>
+              </div>
+              
+              <div class="summary-row">
+                <span>KDV (%18):</span>
+                <span id="tax">₺0.00</span>
+              </div>
+              
+              <div class="summary-divider"></div>
+              
+              <div class="summary-row total">
+                <span>Toplam:</span>
+                <span id="grandTotal">₺0.00</span>
+              </div>
+              
+              <button class="checkout-btn" id="checkoutBtn">
+                <i class="bi bi-credit-card"></i> Ödemeye Geç
+              </button>
+              
+              <a href="index.html" class="continue-shopping">
+                <i class="bi bi-arrow-left"></i> Alışverişe Devam Et
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Cart Content End -->
+
+    <script src="./script.js"></script>
+  </body>
+</html>
