@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giriş Yap - ShopHub</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./auth.css" />
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="logo">
+            <i class="bi bi-shop"></i>
+            <h1>ShopHub</h1>
+          </div>
+          <nav class="nav" id="nav">
+            <div class="nav-overlay" id="navOverlay"></div>
+            <div class="nav-menu">
+              <button class="nav-close" id="navClose">
+                <i class="bi bi-x-lg"></i>
+              </button>
+              <ul>
+                <li>
+                  <a href="index.html"><i class="bi bi-house-door"></i> Ana Sayfa</a>
+                </li>
+                <li>
+                  <a href="index.html#categories"
+                    ><i class="bi bi-grid"></i> Kategoriler</a
+                  >
+                </li>
+                <li>
+                  <a href="index.html#products"><i class="bi bi-bag"></i> Ürünler</a>
+                </li>
+                <li>
+                  <a href="contact.html"><i class="bi bi-envelope"></i> İletişim</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="cart">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-count">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Auth Section Start -->
+    <section class="auth-section">
+      <div class="auth-container">
+        <div class="auth-wrapper">
+          <!-- Auth Sidebar -->
+          <div class="auth-sidebar">
+            <div class="auth-sidebar-content">
+              <div class="auth-logo">
+                <i class="bi bi-shop"></i>
+                <h2>ShopHub</h2>
+              </div>
+              <h3>Hoş Geldiniz!</h3>
+              <p>
+                Hesabınıza giriş yaparak tüm özelliklerden yararlanabilir,
+                siparişlerinizi takip edebilir ve özel fırsatlardan haberdar
+                olabilirsiniz.
+              </p>
+              <div class="auth-features">
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Hızlı ve Güvenli Alışveriş</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Sipariş Takibi</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Özel İndirimler</span>
+                </div>
+                <div class="feature-item">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Favori Ürünler</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Login Form -->
+          <div class="auth-form-section">
+            <div class="auth-form-container">
+              <div class="auth-header">
+                <h2><i class="bi bi-box-arrow-in-right"></i> Giriş Yap</h2>
+                <p>Hesabınıza giriş yapın</p>
+              </div>
+
+              <form class="auth-form">
+                <div class="form-group">
+                  <label for="email">
+                    <i class="bi bi-envelope"></i> E-posta Adresi
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="ornek@email.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="password">
+                    <i class="bi bi-lock"></i> Şifre
+                  </label>
+                  <div class="password-input">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="••••••••"
+                      required
+                    />
+                    <button type="button" class="toggle-password">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-options">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="remember" />
+                    <span>Beni Hatırla</span>
+                  </label>
+                  <a href="#" class="forgot-password">Şifremi Unuttum?</a>
+                </div>
+
+                <button type="submit" class="auth-btn">
+                  <i class="bi bi-box-arrow-in-right"></i> Giriş Yap
+                </button>
+
+                <div class="divider">
+                  <span>veya</span>
+                </div>
+
+                <div class="social-login">
+                  <button type="button" class="social-btn google">
+                    <i class="bi bi-google"></i>
+                    Google ile Giriş Yap
+                  </button>
+                  <button type="button" class="social-btn facebook">
+                    <i class="bi bi-facebook"></i>
+                    Facebook ile Giriş Yap
+                  </button>
+                </div>
+
+                <div class="auth-footer">
+                  <p>
+                    Hesabınız yok mu?
+                    <a href="register.html">Kayıt Ol</a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Auth Section End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><i class="bi bi-shop"></i> ShopHub</h3>
+            <p>
+              En kaliteli ürünleri en uygun fiyatlarla sunan online alışveriş
+              platformu.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3><i class="bi bi-link-45deg"></i> Hızlı Linkler</h3>
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="bi bi-chevron-right"></i> Ana Sayfa</a
+                >
+              </li>
+              <li>
+                <a href="index.html#categories"
+                  ><i class="bi bi-chevron-right"></i> Kategoriler</a
+                >
+              </li>
+              <li>
+                <a href="index.html#products"
+                  ><i class="bi bi-chevron-right"></i> Ürünler</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3><i class="bi bi-telephone"></i> İletişim</h3>
+            <p><i class="bi bi-envelope"></i> info@shophub.com</p>
+            <p><i class="bi bi-phone"></i> +90 123 456 78 90</p>
+            <p><i class="bi bi-geo-alt"></i> İstanbul, Türkiye</p>
+          </div>
+          <div class="footer-section">
+            <h3><i class="bi bi-share"></i> Bizi Takip Edin</h3>
+            <div class="social-links">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            <i class="bi bi-c-circle"></i> 2025 ShopHub. Tüm hakları saklıdır.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
+  </body>
+</html>
