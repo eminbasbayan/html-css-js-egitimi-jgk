@@ -56,16 +56,33 @@
               <span class="cart-count">0</span>
             </div>
 
+            <!-- Kullanıcı giriş yapmışsa göster -->
             <div
-              class="cart"
-              id="logout"
-              data-tooltip="Çıkış Yap"
-              data-tooltip-position="bottom"
-              style="display: flex; align-items: center; gap: 6px;"
-              onclick="handleLogout()"
+              class="user-info"
+              id="userInfo"
+              style="display: none; align-items: center; gap: 8px;"
             >
-              <i class="bi bi-box-arrow-right"></i>
-            
+              <span class="username-display" id="usernameDisplay"></span>
+              <div
+                class="cart"
+                id="logout"
+                data-tooltip="Çıkış Yap"
+                data-tooltip-position="bottom"
+                style="cursor: pointer;"
+                onclick="handleLogout()"
+              >
+                <i class="bi bi-box-arrow-right"></i>
+              </div>
+            </div>
+
+            <!-- Kullanıcı giriş yapmamışsa göster -->
+            <div id="authButtons" style="display: flex; gap: 8px; align-items: center;">
+              <a href="./login.html" class="auth-link-btn">
+                <i class="bi bi-box-arrow-in-right"></i> Giriş
+              </a>
+              <a href="./register.html" class="auth-link-btn register">
+                <i class="bi bi-person-plus"></i> Kayıt
+              </a>
             </div>
           </div>
         </div>

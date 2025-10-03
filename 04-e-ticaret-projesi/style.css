@@ -169,6 +169,49 @@ body {
   font-weight: bold;
 }
 
+/* Auth Buttons */
+.auth-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.auth-link-btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-link-btn.register {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.auth-link-btn.register:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* User Info */
+.username-display {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--color-white);
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+}
+
 /* Header End */
 
 /* Hero Start */

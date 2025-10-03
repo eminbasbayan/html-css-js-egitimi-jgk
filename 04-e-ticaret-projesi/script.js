@@ -250,9 +250,28 @@ function handleLogout() {
   }
 }
 
+function checkAuthStatus() {
+  const token = localStorage.getItem('authToken');
+  const username = localStorage.getItem('username');
+  const userInfo = document.getElementById('userInfo');
+  const authButtons = document.getElementById('authButtons');
+  const usernameDisplay = document.getElementById('usernameDisplay');
+
+  if (token && username) {
+    // Kullanıcı giriş yapmış
+    userInfo.style.display = 'flex';
+    authButtons.style.display = 'none';
+    usernameDisplay.textContent = username;
+  } else {
+    // Kullanıcı giriş yapmamış
+    userInfo.style.display = 'none';
+    authButtons.style.display = 'flex';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   cartCountDOM.textContent = cartItems.length;
-  document.getElementById('logout').addEventListener('click', handleLogout);
+  checkAuthStatus();
   initModal();
   initMobileMenu();
   initTooltips();
