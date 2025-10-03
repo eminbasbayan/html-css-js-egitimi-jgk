@@ -260,12 +260,14 @@ body {
   font-size: 4rem;
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
+  pointer-events: none;
 }
 
 .category-card h3 {
   font-size: 1.3rem;
   color: var(--color-secondary);
   text-transform: capitalize;
+  pointer-events: none;
 }
 /* Category End */
 

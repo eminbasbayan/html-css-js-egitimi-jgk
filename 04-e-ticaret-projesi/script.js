@@ -45,13 +45,21 @@ function displayCategories(categories) {
     .map((category) => {
       const icon = categoryIcons[category];
       return `
-      <div class="category-card" onclick="filterByCategory(\`${category}\`)">
+      <div class="category-card" data-category="${category}">
         <i class="bi ${icon}"></i>
       <h3>${category}</h3>
     </div>
     `;
     })
     .join('');
+
+  categoriesGridDOM.addEventListener('click', (event) => {
+    console.log(event.target.className);
+    if (event.target.className === 'category-card') {
+      // console.log(event.target.dataset.category);
+      filterByCategory(event.target.dataset.category);
+    }
+  });
 }
 
 async function fetchProducts() {
@@ -150,12 +158,19 @@ function createFilterButtons(categories) {
       (category) => `
         <button class="filter-btn ${
           category === 'all' ? 'active' : ''
-        }" onclick="filterByCategory(\`${category}\`)">
+        }" data-category="${category}">
             ${category === 'all' ? 'Tümü' : category}
         </button>
     `
     )
     .join('');
+
+  filterButtons.addEventListener('click', (event) => {
+    if (event.target.classList.contains('filter-btn')) {
+      console.log(event.target.dataset.category);
+      filterByCategory(event.target.dataset.category);
+    }
+  });
 }
 
 async function filterByCategory(category) {
