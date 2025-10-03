@@ -100,18 +100,18 @@
                 <p>Hesabınıza giriş yapın</p>
               </div>
 
-              <form class="auth-form">
+              <form class="auth-form" id="loginForm">
                 <div class="form-group">
-                  <label for="email">
-                    <i class="bi bi-envelope"></i> E-posta Adresi
+                  <label for="username">
+                    <i class="bi bi-person"></i> Kullanıcı Adı
                   </label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="ornek@email.com"
-                    required
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="mor_2314"
                   />
+                  <span class="error-message" id="usernameError"></span>
                 </div>
 
                 <div class="form-group">
@@ -124,12 +124,12 @@
                       id="password"
                       name="password"
                       placeholder="••••••••"
-                      required
                     />
-                    <button type="button" class="toggle-password">
+                    <button type="button" class="toggle-password" id="togglePassword">
                       <i class="bi bi-eye"></i>
                     </button>
                   </div>
+                  <span class="error-message" id="passwordError"></span>
                 </div>
 
                 <div class="form-options">
@@ -228,5 +228,7 @@
       </div>
     </footer>
     <!-- Footer End -->
+
+    <script src="./login.js"></script>
   </body>
 </html>

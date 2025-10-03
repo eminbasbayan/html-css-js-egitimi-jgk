@@ -239,8 +239,20 @@ function addToCart(productId) {
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
+function handleLogout() {
+  const token = localStorage.getItem('authToken');
+
+  if (token) {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('username');
+
+    window.location.href = './login.html';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   cartCountDOM.textContent = cartItems.length;
+  document.getElementById('logout').addEventListener('click', handleLogout);
   initModal();
   fetchCategories();
   fetchProducts();

@@ -439,3 +439,23 @@
     font-size: 1.8rem;
   }
 }
+
+
+/* Error Messages */
+.error-message {
+  display: block;
+  color: #e74c3c;
+  font-size: 1.2rem;
+  margin-top: var(--spacing-xs);
+  min-height: 1.8rem;
+}
+
+.form-group input.error {
+  border-color: #e74c3c;
+  background-color: #fef5f5;
+}
+
+.form-group input.error:focus {
+  outline-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}

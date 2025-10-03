@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Ticaret Mağazası</title>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./components.css">
+    <link rel="stylesheet" href="./components.css" />
   </head>
   <body>
     <!-- Header Start -->
@@ -45,9 +45,28 @@
               </ul>
             </div>
           </nav>
-          <div class="cart" data-tooltip="Sepetim" data-tooltip-position="bottom">
-            <i class="bi bi-cart3"></i>
-            <span class="cart-count">0</span>
+
+          <div style="display: flex; gap: 10px; align-items: center">
+            <div
+              class="cart"
+              data-tooltip="Sepetim"
+              data-tooltip-position="bottom"
+            >
+              <i class="bi bi-cart3"></i>
+              <span class="cart-count">0</span>
+            </div>
+
+            <div
+              class="cart"
+              id="logout"
+              data-tooltip="Çıkış Yap"
+              data-tooltip-position="bottom"
+              style="display: flex; align-items: center; gap: 6px;"
+              onclick="handleLogout()"
+            >
+              <i class="bi bi-box-arrow-right"></i>
+            
+            </div>
           </div>
         </div>
       </div>
@@ -92,7 +111,6 @@
       </div>
     </section>
     <!-- Products End -->
-
 
     <!-- Footer Start -->
     <footer class="footer">
