@@ -1,3 +1,5 @@
+import { initMobileMenu } from './components.js';
+
 const loginForm = document.getElementById('loginForm');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
@@ -105,6 +107,11 @@ loginForm.addEventListener('submit', (e) => {
   // Submit login
   const credentials = { username, password };
   handleLogin(credentials);
+});
+
+// Initialize mobile menu
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileMenu();
 });
 
 // Real-time validation

@@ -1,4 +1,4 @@
-import { initModal, showProductModal } from './components.js';
+import { initModal, showProductModal, initMobileMenu } from './components.js';
 
 const cartCountDOM = document.querySelector('.cart-count');
 const cartItemsListDOM = document.getElementById('cartItemsList');
@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
   cartCountDOM.textContent = cartItems.length;
   displayCartItems(cartItems);
   initModal();
+  initMobileMenu();
   cartTotal(cartItems);
   totalItems(cartItems);
 });

@@ -118,4 +118,50 @@ function initTooltips() {
   });
 }
 
-export { openModal, closeModal, initModal, showProductModal, initTooltips, createTooltip };
+// ========== MOBILE MENU ==========
+
+function initMobileMenu() {
+  const menuToggle = document.getElementById('menuToggle');
+  const navClose = document.getElementById('navClose');
+  const navOverlay = document.getElementById('navOverlay');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (!menuToggle || !navClose || !navOverlay || !navMenu) {
+    return;
+  }
+
+  // Open menu
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.add('active');
+    navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Close menu function
+  const closeMenu = () => {
+    navMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  };
+
+  // Close menu when clicking close button
+  navClose.addEventListener('click', closeMenu);
+
+  // Close menu when clicking overlay
+  navOverlay.addEventListener('click', closeMenu);
+
+  // Close menu when clicking a nav link
+  const navLinks = navMenu.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu with ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+}
+
+export { openModal, closeModal, initModal, showProductModal, initTooltips, createTooltip, initMobileMenu };

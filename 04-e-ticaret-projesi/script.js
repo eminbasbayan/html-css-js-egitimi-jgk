@@ -1,4 +1,4 @@
-import { initModal, showProductModal, initTooltips } from './components.js';
+import { initModal, showProductModal, initTooltips, initMobileMenu } from './components.js';
 
 const categoriesGridDOM = document.querySelector('.categories-grid');
 const productsGridDOM = document.querySelector('.products-grid');
@@ -254,6 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
   cartCountDOM.textContent = cartItems.length;
   document.getElementById('logout').addEventListener('click', handleLogout);
   initModal();
+  initMobileMenu();
+  initTooltips();
   fetchCategories();
   fetchProducts();
 });
