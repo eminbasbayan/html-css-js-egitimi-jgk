@@ -33,39 +33,47 @@ function displayCartItems(cartItems) {
 
   cartItemsListDOM.innerHTML = cartItems
     .map((cartItem) => {
-      const fullStars = Math.floor(cartItem.rating.rate);
-      const hasHalfStar = cartItem.rating.rate % 1 >= 0.5;
-      let stars = '<i class="bi bi-star-fill"></i>'.repeat(fullStars);
-      if (hasHalfStar) stars += '<i class="bi bi-star-half"></i>';
-      const emptyStars = 5 - Math.ceil(cartItem.rating.rate);
-      stars += '<i class="bi bi-star"></i>'.repeat(emptyStars);
+      const itemTotal = (cartItem.price * cartItem.quantity).toFixed(2);
 
-      return `<div class="product-card" data-product-id="${cartItem.id}" style="cursor: pointer;">
-      <img
-        src="${cartItem.image}"
-        alt="${cartItem.title}"
-        class="product-image"
-      />
-      <div class="product-info">
-        <p class="product-category">
-          <i class="bi bi-tag"></i> ${cartItem.category}
-        </p>
-        <h3 class="product-title">${cartItem.title}</h3>
-        <div class="product-rating">
-          <span class="stars">${stars}</span>
-          <span>(${cartItem.rating.count})</span>
-        </div>
-        <p class="product-price">₺${cartItem.price}</p>
-        <div class="product-quantity-container">
-        <button onclick="updateQuantity(${cartItem.id}, 1)">+</button>
-        <strong class="product-price">${cartItem.quantity}</strong>
-        <button onclick="updateQuantity(${cartItem.id}, 0)">-</button>
-        </div>
-        <button class="remove-from-cart" onclick="removeFromCart(${cartItem.id})">
-          <i class="bi bi-trash"></i> Sepetten Çıkar
-        </button>
-      </div>
-    </div>`;
+      return `<tr data-product-id="${cartItem.id}">
+        <td>
+          <div class="cart-item-product">
+            <img
+              src="${cartItem.image}"
+              alt="${cartItem.title}"
+              class="cart-item-image"
+            />
+            <div class="cart-item-details">
+              <h4>${cartItem.title}</h4>
+              <span class="cart-item-category">
+                <i class="bi bi-tag"></i> ${cartItem.category}
+              </span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <span class="cart-item-price">₺${cartItem.price.toFixed(2)}</span>
+        </td>
+        <td>
+          <div class="cart-item-quantity">
+            <button class="quantity-btn" onclick="updateQuantity(${cartItem.id}, 0)">
+              <i class="bi bi-dash"></i>
+            </button>
+            <span class="quantity-value">${cartItem.quantity}</span>
+            <button class="quantity-btn" onclick="updateQuantity(${cartItem.id}, 1)">
+              <i class="bi bi-plus"></i>
+            </button>
+          </div>
+        </td>
+        <td>
+          <span class="cart-item-total">₺${itemTotal}</span>
+        </td>
+        <td>
+          <button class="cart-item-remove" onclick="removeFromCart(${cartItem.id})">
+            <i class="bi bi-trash"></i> Sil
+          </button>
+        </td>
+      </tr>`;
     })
     .join('');
 
@@ -73,22 +81,17 @@ function displayCartItems(cartItems) {
 }
 
 function attachProductCardListeners() {
-  const productCards = document.querySelectorAll('.product-card');
+  const productRows = document.querySelectorAll('tr[data-product-id]');
 
-  productCards.forEach((card) => {
-    card.addEventListener('click', (e) => {
-      // Sepete ekle butonuna tıklanmışsa modal açma
-      if (e.target.closest('.add-to-cart')) {
-        e.stopPropagation();
-        const productId = parseInt(
-          e.target.closest('.add-to-cart').dataset.productId
-        );
-        addToCart(productId);
+  productRows.forEach((row) => {
+    row.addEventListener('click', (e) => {
+      // Butonlara tıklanmışsa modal açma
+      if (e.target.closest('.quantity-btn') || e.target.closest('.cart-item-remove')) {
         return;
       }
 
-      // Ürün kartına tıklanmışsa modal aç
-      const productId = parseInt(card.dataset.productId);
+      // Ürün satırına tıklanmışsa modal aç
+      const productId = parseInt(row.dataset.productId);
       const product = cartItems.find((p) => p.id === productId);
       if (product) {
         showProductModal(product);
@@ -97,7 +100,7 @@ function attachProductCardListeners() {
   });
 }
 
-function updateQuantity(cartItemId, value) {
+window.updateQuantity = function(cartItemId, value) {
   const findCartItem = cartItems.find((item) => item.id === cartItemId);
 
   if (value === 1) {
@@ -115,6 +118,8 @@ function updateQuantity(cartItemId, value) {
     if (findCartItem.quantity === 1) {
       if (confirm('Ürünü Silme İçin Emin Misin?')) {
         cartItems = cartItems.filter((item) => item.id !== cartItemId);
+      } else {
+        return;
       }
     } else {
       cartItems = cartItems.map((cartItem) => {
@@ -132,16 +137,20 @@ function updateQuantity(cartItemId, value) {
   cartTotal(cartItems);
   displayCartItems(cartItems);
   totalItems(cartItems);
+  cartCountDOM.textContent = cartItems.length;
 }
 
-function removeFromCart(cartItemId) {
+window.removeFromCart = function(cartItemId) {
+  if (!confirm('Ürünü sepetten çıkarmak istediğinize emin misiniz?')) {
+    return;
+  }
+
   cartItems = cartItems.filter((cartItem) => cartItem.id !== cartItemId);
   displayCartItems(cartItems);
 
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
   cartCountDOM.textContent = cartItems.length;
-  console.log(cartItems.length);
 
   emptyCart(cartItems);
   cartTotal(cartItems);
