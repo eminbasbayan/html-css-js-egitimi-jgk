@@ -1,3 +1,8 @@
+import {
+  initModal,
+  showProductModal,
+} from './components.js';
+
 const categoriesGridDOM = document.querySelector('.categories-grid');
 const productsGridDOM = document.querySelector('.products-grid');
 const filterButtons = document.getElementById('filterButtons');
@@ -74,7 +79,7 @@ function displayProducts(products) {
       const emptyStars = 5 - Math.ceil(product.rating.rate);
       stars += '<i class="bi bi-star"></i>'.repeat(emptyStars);
 
-      return `<div class="product-card">
+      return `<div class="product-card" data-product-id="${product.id}" style="cursor: pointer;">
     <img
       src="${product.image}"
       alt="${product.title}"
@@ -90,13 +95,40 @@ function displayProducts(products) {
         <span>(${product.rating.count})</span>
       </div>
       <p class="product-price">₺${product.price}</p>
-      <button class="add-to-cart" onclick="addToCart(${product.id})">
+      <button class="add-to-cart" data-product-id="${product.id}">
         <i class="bi bi-cart-plus"></i> Sepete Ekle
       </button>
     </div>
   </div>`;
     })
     .join('');
+
+  attachProductCardListeners();
+}
+
+function attachProductCardListeners() {
+  const productCards = document.querySelectorAll('.product-card');
+
+  productCards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      // Sepete ekle butonuna tıklanmışsa modal açma
+      if (e.target.closest('.add-to-cart')) {
+        e.stopPropagation();
+        const productId = parseInt(
+          e.target.closest('.add-to-cart').dataset.productId
+        );
+        addToCart(productId);
+        return;
+      }
+
+      // Ürün kartına tıklanmışsa modal aç
+      const productId = parseInt(card.dataset.productId);
+      const product = allProducts.find((p) => p.id === productId);
+      if (product) {
+        showProductModal(product, addToCart);
+      }
+    });
+  });
 }
 
 function createFilterButtons(categories) {
@@ -181,6 +213,7 @@ function addToCart(productId) {
 
 document.addEventListener('DOMContentLoaded', () => {
   cartCountDOM.textContent = cartItems.length;
+  initModal();
   fetchCategories();
   fetchProducts();
 });

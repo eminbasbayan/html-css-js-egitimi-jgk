@@ -1,3 +1,5 @@
+import { initModal, showProductModal } from './components.js';
+
 const cartCountDOM = document.querySelector('.cart-count');
 const cartItemsListDOM = document.getElementById('cartItemsList');
 const cartContainerDOM = document.getElementById('cartContainer');
@@ -38,7 +40,7 @@ function displayCartItems(cartItems) {
       const emptyStars = 5 - Math.ceil(cartItem.rating.rate);
       stars += '<i class="bi bi-star"></i>'.repeat(emptyStars);
 
-      return `<div class="product-card">
+      return `<div class="product-card" data-product-id="${cartItem.id}" style="cursor: pointer;">
       <img
         src="${cartItem.image}"
         alt="${cartItem.title}"
@@ -66,6 +68,33 @@ function displayCartItems(cartItems) {
     </div>`;
     })
     .join('');
+
+  attachProductCardListeners();
+}
+
+function attachProductCardListeners() {
+  const productCards = document.querySelectorAll('.product-card');
+
+  productCards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      // Sepete ekle butonuna tıklanmışsa modal açma
+      if (e.target.closest('.add-to-cart')) {
+        e.stopPropagation();
+        const productId = parseInt(
+          e.target.closest('.add-to-cart').dataset.productId
+        );
+        addToCart(productId);
+        return;
+      }
+
+      // Ürün kartına tıklanmışsa modal aç
+      const productId = parseInt(card.dataset.productId);
+      const product = cartItems.find((p) => p.id === productId);
+      if (product) {
+        showProductModal(product);
+      }
+    });
+  });
 }
 
 function updateQuantity(cartItemId, value) {
@@ -102,7 +131,7 @@ function updateQuantity(cartItemId, value) {
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
   cartTotal(cartItems);
   displayCartItems(cartItems);
-  totalItems(cartItems)
+  totalItems(cartItems);
 }
 
 function removeFromCart(cartItemId) {
@@ -116,7 +145,7 @@ function removeFromCart(cartItemId) {
 
   emptyCart(cartItems);
   cartTotal(cartItems);
-  totalItems(cartItems)
+  totalItems(cartItems);
 }
 
 function cartTotal(cartItems) {
@@ -146,6 +175,7 @@ function totalItems(cartItems) {
 document.addEventListener('DOMContentLoaded', () => {
   cartCountDOM.textContent = cartItems.length;
   displayCartItems(cartItems);
+  initModal();
   cartTotal(cartItems);
   totalItems(cartItems);
 });
