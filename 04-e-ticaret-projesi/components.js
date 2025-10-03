@@ -97,4 +97,25 @@ function showProductModal(product, addToCartCallback) {
   }
 }
 
-export { openModal, closeModal, initModal, showProductModal };
+// ========== TOOLTIP COMPONENT ==========
+
+function createTooltip(element, text, position = 'top') {
+  const tooltip = document.createElement('span');
+  tooltip.className = `tooltip tooltip-${position}`;
+  tooltip.textContent = text;
+
+  element.style.position = 'relative';
+  element.appendChild(tooltip);
+}
+
+function initTooltips() {
+  const tooltipElements = document.querySelectorAll('[data-tooltip]');
+
+  tooltipElements.forEach((element) => {
+    const text = element.getAttribute('data-tooltip');
+    const position = element.getAttribute('data-tooltip-position') || 'top';
+    createTooltip(element, text, position);
+  });
+}
+
+export { openModal, closeModal, initModal, showProductModal, initTooltips, createTooltip };

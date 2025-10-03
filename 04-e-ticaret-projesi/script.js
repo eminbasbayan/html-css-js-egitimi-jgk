@@ -1,7 +1,4 @@
-import {
-  initModal,
-  showProductModal,
-} from './components.js';
+import { initModal, showProductModal, initTooltips } from './components.js';
 
 const categoriesGridDOM = document.querySelector('.categories-grid');
 const productsGridDOM = document.querySelector('.products-grid');
@@ -70,7 +67,22 @@ async function fetchProducts() {
 }
 
 function displayProducts(products) {
-  productsGridDOM.innerHTML = products
+  const newProducts = products.map((item) => {
+    if (item.id === 7) {
+      return {
+        ...item,
+        dataTooltipText: 'Özel Ürün',
+        datatooltipPosition: 'top',
+      };
+    }
+    return {
+      ...item,
+      dataTooltipText: 'Sepete Ekler',
+      datatooltipPosition: 'top',
+    };
+  });
+
+  productsGridDOM.innerHTML = newProducts
     .map((product) => {
       const fullStars = Math.floor(product.rating.rate);
       const hasHalfStar = product.rating.rate % 1 >= 0.5;
@@ -95,7 +107,7 @@ function displayProducts(products) {
         <span>(${product.rating.count})</span>
       </div>
       <p class="product-price">₺${product.price}</p>
-      <button class="add-to-cart" data-product-id="${product.id}">
+      <button class="add-to-cart" data-tooltip="${product.dataTooltipText}" data-tooltip-position="${product.datatooltipPosition}" data-product-id="${product.id}">
         <i class="bi bi-cart-plus"></i> Sepete Ekle
       </button>
     </div>
@@ -104,6 +116,7 @@ function displayProducts(products) {
     .join('');
 
   attachProductCardListeners();
+  initTooltips();
 }
 
 function attachProductCardListeners() {
